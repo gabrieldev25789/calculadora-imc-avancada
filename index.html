@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/cssRevisao.css">
+</head>
+<body>
+
+    <div id="imgs">
+        <img src="./img/alimentacaoimg.jpg" alt="" class="img-intro">
+        <img src="./img/treinoimg.jpg" alt="" class="img-intro">
+        <img src="./img/saudavel.jpg" alt="" class="img-intro">
+    </div>
+
+    <div id="opacity"></div>
+
+    <div id="intro-infos">
+        <h1>Bem vindo a Calculadora de IMC</h1>
+        <p>Descubra seu IMC e cuide da sua saúde.<br>
+        Calcule rapidamente seu Índice de Massa Corporal (IMC) e veja em qual faixa você se encontra: abaixo do peso, peso ideal, sobrepeso ou obesidade. Com base no resultado, você receberá recomendações personalizadas para alcançar seus objetivos, seja perder, manter ou ganhar peso. Simples, rápido e direto — comece agora!</p>
+    </div>
+
+    <div id="buttons">
+        <div id="result" class="hide">
+            <p></p>
+            <span></span>
+
+        </div>
+
+        <h2>Selecione uma opção</h2>
+
+        <div id="setas" class="hide">
+            <img src="./img/avanco-rapido.png" alt="" id="seta-direita" class="seta">
+            <img src="./img/avanco-rapido.png" alt="" id="seta-esquerda" class="seta">
+        </div>
+
+        <div id="buttons-container">
+            <button id="perder" class="button">perder peso</button> 
+            <button id="manter" class="button">manter peso</button>
+            <button id="ganhar" class="button">Ganhar peso</button>
+        </div>
+    </div>
+
+    <div id="telaPreta" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1000;">
+</div>
+
+    <div id="calc-container">
+        <div id="inputs-labels">
+        <h2>Calcule seu IMC</h2>
+
+            <label class="label">Peso em <span>KG</span>
+                <input type="number" id="peso" class="input" placeholder="Ex: 80">
+            </label>
+    
+            <label class="label">altura em <span>CM</span>
+                <input type="number" id="altura" class="input" placeholder="Ex: 1,80">
+            </label>
+
+            <button id="btn-calc">Calcular</button>
+        </div>
+    </div>
+    
+    <!-- parte de treino e alimentação -->
+    
+
+<a href="#" id="voltar"><img src="./img/botao-voltar.png" id="seta-voltar" alt=""></a>
+
+<div id="container-treino-alimentacao" class="hide">
+
+    <button id="button-show-container" class="hide">Plano de Treino e Alimentação</button>
+        <a href="#" id="plano"></a>
+
+    
+        <div id="treino-alimentacao" class="hidden">
+           
+            <div id="treino">
+                <h2>Treino</h2>
+                <div id="treino-container">
+                    <span id="segunda">
+                        <p id="dia">Segunda Feira:</p>
+                        <span id="Peito-ombro-tri" class="treino-dia">Peito / ombro / triceps</span> 
+                        <button id="segunda" class="button-treino">Ver Treino</button>
+                    </span>
+                    <span id="terca">
+                        <p id="dia">Terça Feira:</p>
+                        <span  id="costas-biceps" class="treino-dia">Costas / Biceps</span> 
+                        <button id="terca" class="button-treino">Ver Treino</button>
+                    </span>
+                    <span id="quarta">
+                        <p id="dia">Quarta Feira:</p>
+                        <span id="perna" class="treino-dia">Perna Completo</span> 
+                        <button id="quarta" class="button-treino">Ver Treino</button>
+                    </span>
+                    <span id="quinta">
+                        <p id="dia">Quinta Feira:</p>
+                        <span id="ombro" class="treino-dia">Ombro isolado</span> 
+                        <button id="quinta" class="button-treino">Ver Treino</button>
+                    </span>
+                    <span id="sexta">
+                        <p id="dia">Sexta Feira:</p> 
+                        <span id="biceps-triceps" class="treino-dia">Biceps / Triceps</span> 
+                        <button id="sexta" class="button-treino">Ver Treino</button>
+                    </span>
+                    <span id="sabado">
+                        <p id="dia-sabado-treino">Sábado:</p>
+                        <span id="cardio" class="treino-dia">Cardio / Descanso</span> 
+                    </span>
+                    <span id="domingo">
+                        <p id="dia">Domingo:</p>
+                        <span id="descanso" class="treino-dia">Cardio / Descanso</span> 
+                    </span>
+                </div>
+            </div>
+    
+            <div id="alimentacao">
+                <h2>Alimentação</h2>
+                <div id="alimentacao-container">
+                    <span id="span-aliment">
+                        <p id="dia-segunda" class="dia">Segunda Feira:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-segunda">
+                                    <option value="" disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>
+
+                    <span id="span-aliment">
+                        <p id="dia-terca" class="dia">Terça Feira:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-terca">
+                                    <option disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>
+    
+                    <span id="span-aliment">
+                        <p id="dia-quarta" class="dia">Quarta Feira:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-quarta">
+                                    <option disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>
+    
+                    <span id="span-aliment">
+                        <p id="dia-quinta" class="dia">Quinta Feira:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-quinta">
+                                    <option disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>
+    
+                    <span id="span-aliment">
+                        <p id="dia-sexta" class="dia">Sexta Feira:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-sexta">
+                                    <option disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>
+    
+                    <span id="span-aliment">
+                        <p id="dia-sabado" class="dia">Sábado:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-sabado">
+                                    <option disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>
+    
+                    <span id="span-aliment">
+                        <p id="dia-domingo" class="dia">Domingo:</p>
+                        <span id="alimentacao-dia">
+                            <div id="container-aliment">
+                                <select class="select-ref" id="select-domingo">
+                                    <option disabled selected>selecione uma refeição</option>
+                                    <option value="cafe">Café da manhã</option>
+                                    <option value="almoco">Almoço</option>
+                                    <option value="lanche">Lanche da tarde</option>
+                                    <option value="janta">Janta</option>
+                                </select>
+                            </div>
+                        </span>
+                    </span>   
+                </div>
+            </div>
+
+        <!-- MOSTRAR REFEIÇÕES -->
+             
+        <div id="container-refeicao" class="hide"></div>  
+
+    </div>  
+    <script type="module" src="./js/mainJsRevisao.js"></script>
+</body>
+</html>
