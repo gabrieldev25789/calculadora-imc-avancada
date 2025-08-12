@@ -229,7 +229,7 @@ function validHeightAndWeight(){
       resultMessage.textContent = "digite valor em peso e altura"
       newH2.style.marginTop = "-5rem"
     } 
-    else if(weightValue >= 400 || heightValue > 2.20 || heightValue <= 1.30){
+    else if( weightValue >= 380 || /*weightValue >= 400 || */ heightValue > 2.20 || heightValue <= 1.30){
       removerContainereMostrarMensagem()
       resultMessage.textContent = "valores invalidos"
       newH2.style.marginTop = "-5rem"
@@ -316,7 +316,7 @@ function verificarValores(){
     const weightValue = +weight.value;
     const heightValue = +height.value.replace(",", ".");
 
-    if (!weightValue || !heightValue || weightValue >= 400 || heightValue >= 2.20 || heightValue <= 1 || heightValue < 1.10 || heightValue <= 1.30) return;
+    if (!weightValue || !heightValue || weightValue >= 380 || /*weightValue >= 400 || */ heightValue >= 2.20 || heightValue <= 1 || heightValue < 1.10 || heightValue <= 1.30) return;
   
     showResult();
     cleanInputs()

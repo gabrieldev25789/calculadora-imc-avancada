@@ -202,6 +202,7 @@ body{
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 2rem;
+    background-color: red;
 }
 
 /* ALERTA DO RESULTADO(APARECE CASO TENHA INCOERENCIA DO IMC COM AS METAS) */
@@ -523,19 +524,19 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
 }
 /* CLASSES APLICADAS NO RESULTADO DEPENDENDO DO IMC */
 .low-extreme{
-    background-color: rgb(236, 123, 16);
+    background-color: rgb(236, 123, 16) !important; 
 }
 
 .normal{
-    background-color: rgb(130, 245, 22);
+    background-color: rgb(130, 245, 22) !important;
 }
 
 .extreme{
-    background-color: rgb(216, 42, 29);
+    background-color: rgb(216, 42, 29) !important;
 }
 
 .very-extreme{
-    background-color: rgb(238, 16, 16);
+    background-color: rgb(238, 16, 16) !important;
 }
 
 /* RESPONSIVIDADE */ 
