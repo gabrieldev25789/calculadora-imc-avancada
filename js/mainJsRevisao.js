@@ -517,6 +517,10 @@ function normalizarEstilo(){
     resultMessage.classList.contains("normal")){
     buttonShowTreinoAlimentacao.style.marginTop = "-105rem"
     buttonShowTreinoAlimentacao.style.marginLeft = "1vh"
+    treinoAlimentacao.style.marginTop = "-290vh"
+    treinoAlimentacao.style.marginLeft = "25vh"
+    plano.style.marginTop = "-321vh"
+    plano.style.marginLeft = "10vh"
   }
 }
 
