@@ -549,6 +549,7 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     #imgs{
         display: flex;
         flex-direction: column;
+        width: 428px;
     }
     .img-intro{
         width: 210%;

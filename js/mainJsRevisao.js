@@ -354,6 +354,8 @@ ganhar.addEventListener("click", () =>{
 calcBtn.addEventListener("click", (e) => { 
     validHeightAndWeight();
     verificarValores()
+    normalizarEstilo()
+
 });
 
 document.addEventListener("keyup", (e) => {
@@ -380,6 +382,7 @@ if(e.code === "Enter"){
   cleanInputs()
 
   calcContainer.classList.add("hidden")
+  normalizarEstilo()
   } 
 })
 
@@ -505,6 +508,16 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
   div.appendChild(divImg)
 
   estilizarContainerTreino()
+}
+
+function normalizarEstilo(){
+  if(resultMessage.classList.contains("very-extreme") ||
+    resultMessage.classList.contains("extreme") ||
+    resultMessage.classList.contains("low-extreme") || 
+    resultMessage.classList.contains("normal")){
+    buttonShowTreinoAlimentacao.style.marginTop = "-105rem"
+    buttonShowTreinoAlimentacao.style.marginLeft = "1vh"
+  }
 }
 
 // ESTILIZAR O CONTAINER DE TREINO PRA PREENCHER 100% DO CONTAINER E MOSTRAR O TREINO SELECIONADO
