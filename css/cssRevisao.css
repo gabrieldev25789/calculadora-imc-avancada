@@ -630,7 +630,7 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     #seta-direita {
     width: 40px;
     position: absolute;
-    margin-left: 29.2rem;
+    margin-left: 35.2rem;
     margin-top: 2.8rem;
     animation: balancoDireita 0.4s infinite alternate ease-in-out;
 }
@@ -638,11 +638,23 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
 #seta-esquerda {
     width: 40px;
     position: absolute;
-    margin-left: 5rem;
+    margin-left: 11.2rem;
     margin-top: 2.8rem;
     transform: scaleX(-1); 
     animation: balancoEsquerda 0.4s infinite alternate ease-in-out;
 } 
+
+.plano{
+    margin-top: -320vh;
+    margin-left: 2.5rem;
+}
+
+#treino-alimentacao{
+    width: 110vh;
+    margin-top: -290vh;
+    margin-left: 9rem;
+}
+
 /* ANIMAÇÕES DAS SETAS (CREDITOS AO CHATGPT) */
 @keyframes balancoDireita {
     0% { transform: translateX(0); }
@@ -677,8 +689,8 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     #seta-voltar{
     width: 120px;
     position: absolute;
-    margin-top: -133vh;
-    margin-left: -11rem;
+    margin-top: -319vh;
+    margin-left: -5rem;
     } 
 
     #treino-alimentacao{
