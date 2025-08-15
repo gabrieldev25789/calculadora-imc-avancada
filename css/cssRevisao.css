@@ -784,17 +784,44 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     }
 
   #buttons-container{
-    width: 125vh;
-    margin: 1rem -1.8rem;
+    width: 132vh;
+    margin: 1rem 35.8rem;
     padding: 1rem 1rem;
     } 
+
+    #buttons h2{
+    margin: 1rem 42rem 2rem;
+    }
+
+    #intro-infos{
+    position: absolute;
+    margin-top: -82vh;
+    margin-left: 4rem;
+    color: white;
+    }
+
+    #intro-infos h1{
+    font-size: 3.8rem;
+    font-family: sans-serif;
+    }
+
+    #intro-infos p{
+    margin-top: 1rem;
+    line-height: 44px;
+    width: 800px;
+    font-size: 2.2rem;
+    font-family: math;
+    width: 950px;
+    line-height: 56px;
+    }
 
     #result p{
     font-size: 1.6rem;
     }
 
    #calc-container{
-    margin-left: 4rem;
+    width: 800px;
+    margin-left: 38rem;
    }
 
     #seta-direita {
@@ -816,7 +843,6 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
 
    #button-show-container{ 
     margin-left: -40vh;
-    margin-top: -120vh;
     }
 
     /* resultado */
@@ -833,19 +859,15 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     margin-top: -103vh;
     margin-left: -22rem;
 } 
-    /*
-    #treino-alimentacao{
-    font-size: 3rem;
+
+    #opacity{
+    opacity: 0.6;
+    background-color: rgb(0, 0, 0);
     position: absolute;
-    background-color: rgb(46, 151, 46);
-    margin-top: -80vh;
-    margin-left: 12vh;
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 100vh;
-    } */
+    width: 312.5vh;
+    height: 100.2vh;
+    margin-top: -100.2vh;
+    }
 
     #treino-alimentacao{
     font-size: 3rem;
@@ -855,6 +877,10 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     flex-direction: column;
     width: 100vh;
     } 
+
+    #result{
+        margin: 1rem 110vh;
+    }
 
     #treino,
     #alimentacao{
@@ -1013,8 +1039,6 @@ DE OPÇÕES CASO O USUSARIO TENHA DIGITADO O SEU PESO/ALTURA SEM TER ESCOLHIDO U
     #treino ul{
     font-size: 1.8rem;
     }
-
- 
 
     #img-ref {
     width: 100vh;
