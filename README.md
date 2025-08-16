@@ -3,8 +3,8 @@
 Peguei um projeto simples e adicionei um pouco de complexidade a mais.
 Adicionei metas (Perder, Manter, Ganhar)
 O sistema verifica se o IMC condiz com a meta
-passa um treino de segunda a domingo
-Passa alimentação do dia todo (Café da manhã, almoço, lanche e janta) também de segunda a domingo 
+passa um treino de segunda a domingo e também
+Passa alimentação do dia todo (Café da manhã, almoço, lanche e janta) também de segunda a domingo,
 Tudo com base na situação do IMC do usuario 
 
 ## 🚀 Funcionalidades
