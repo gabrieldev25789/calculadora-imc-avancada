@@ -1,699 +1,719 @@
-// =======================================
-// PROJETO: CALCULADORA DE IMC + PLANOS
-// (versão corrigida e robusta)
-// =======================================
+// PROJETO DE CALCULADORA DE IMC COM MAIS ALGUMAS FUNCIONALIDADES
+// PEDE QUE O USUARIO SELECIONE O SEU OBJETIVO (PERDER, MANTER OU GANHAR PESO)
+// VERIFICA SE O OBJETIVO CONDIZ COM O IMC CALCULADO
+// PASSA UM TREINO E UMA ALIMENTAÇÃO PRA TODOS OS DIAS (O TREINO E ALIMENTAÇÃO MUDAM DE ACORDO COM A CONDIÇÃO DO USUARIO)
+// PEGUEI UM PROJETO SIMPLES E PENSEI EM CRIAR UM SISTEMA MAIS COMPLETO QUE REALMENTE PODE AJUDAR ALGUÉM ADICIONANDO MAIS ALGUMAS FUNCIONALIDADES, ESPERO QUE GOSTE!
 
-// ----- TABELA IMC -----
-const data = [
-  { min: 0,   max: 18.4, classification: "Menor que 18,5", info: "Magreza",          obesity: "0"   },
-  { min: 18.5,max: 24.9, classification: "Entre 18,5 e 24,9", info: "Normal",         obesity: "0"   },
-  { min: 25,  max: 29.9, classification: "Entre 25,0 e 29,9", info: "Sobrepeso",      obesity: "I"   },
-  { min: 30,  max: 39.9, classification: "Entre 30,0 e 39,9", info: "Obesidade",      obesity: "II"  },
-  { min: 40,  max: 99,   classification: "Maior que 40,0",    info: "Obesidade grave",obesity: "III" },
+// DADOS DE IMC PARA FAZER OS CALCULOS E VERIFICAR A CONDIÇÃO DO USARIO 
+const data = 
+[
+{ min: 0, max: 18.4, classification: "Menor que 18,5", info: "Magreza", obesity: "0"},
+{ min: 18.5, max: 24.9, classification: "Entre 18,5 e 24,9", info: "Normal", obesity: "0"},
+{ min: 25, max: 29.9, classification: "Entre 25,0 e 29,9", info: "Sobrepeso", obesity: "I"},
+{ min: 30, max: 39.9, classification: "Entre 30,0 e 39,9", info: "Obesidade", obesity:"II"},
+{ min: 40, max: 99, classification: "Maior que 40,0", info: "Obesidade grave",obesity:"III"},
 ];
 
-// ===== IMPORTS (mantenha <script type="module"> no HTML) =====
-import treinosPerder   from "./treinos/treinoperder.js";
-import treinosManter   from "./treinos/treinomanter.js";
-import treinosGanhar   from "./treinos/treinoganhar.js";
-import refDiasPerder   from "./refeicoes/refeicoesperder.js";
-import refDiasManter   from "./refeicoes/refeicoesmanter.js";
-import refDiasGanhar   from "./refeicoes/refeicoesganhar.js";
+// PARTE DAS FUNCIONLAIDADE DAS E OS CALCULOS (PRIMEIRA PARTE DO PROJETO)
+const imgIntro = document.querySelector("#imgs")
+const opacity = document.querySelector("#opacity")
+const infosIntro = document.querySelector("#intro-infos")
+const newH2 = document.querySelector("#buttons h2")
 
-// ====== ELEMENTOS (com checagens) ======
-const $ = (sel) => document.querySelector(sel);
+const telaPreta = document.querySelector("#telaPreta")
 
-// Intro / layout
-const imgIntro      = $("#imgs");
-const opacity       = $("#opacity");
-const infosIntro    = $("#intro-infos");
-const newH2         = $("#buttons h2");
-const telaPreta     = $("#telaPreta");
-const buttons       = $("#buttons");
+const buttons = document.querySelector("#buttons")
 
-// Containers principais
-const buttonsContainer = $("#buttons-container");
-const calcContainer    = $("#calc-container");
 
-// Metas
-const perder = $("#perder");
-const manter = $("#manter");
-const ganhar = $("#ganhar");
-
-// Entradas
-const weight   = $("#peso");
-const height   = $("#altura");
-
-// Ação calcular
-const calcBtn  = $("#btn-calc");
-
-// Resultado
-const resultContainer = $("#result");
-const resultMessage   = $("#result p");
-const alertMessage    = $("#result span");
-const setas           = $("#setas");
-
-// Navegação
-const back = $("#voltar");
-
-// Treino/Alimentação (parte 2)
-const buttonShowTreinoAlimentacao = $("#button-show-container");
-const treinoAlimentacao           = $("#treino-alimentacao");
-const treinoAlimentacaoContainer  = $("#container-treino-alimentacao");
-const plano                       = $("#plano");
-
-// Treino
-const buttonTreino     = document.querySelectorAll(".button-treino");
-const containerTreino  = $("#treino-container");
-const treinoStyle      = $("#treino");
-
-// Alimentação
-const alimentacaoContainer = $("#alimentacao");
-const containerAlimentacao = $("#alimentacao-container");
-const selects              = document.querySelectorAll(".select-ref");
-
-// ======= ESTADO =======
-let meta = null;
-
-// ======= UTIL =======
-function esconder() {
-  if (imgIntro) imgIntro.classList.add("hidden");
-  if (opacity)  opacity.classList.add("hide");
-  if (infosIntro) infosIntro.classList.add("hide");
-  if (buttons) buttons.style.marginTop = "-60vh";
+function esconder(){
+imgIntro.classList.add("hidden")
+opacity.classList.add("hide")
+infosIntro.classList.add("hide")
+buttons.style.marginTop = "-60vh"
 }
 
-function normalizarVisual() {
-  const introInfos = $("#intro-infos");
-  const opacityEl  = $("#opacity");
+const buttonsContainer = document.querySelector("#buttons-container")
 
-  if (imgIntro) imgIntro.classList.remove("hidden");
-  if (buttons)  buttons.style.marginTop = "0";
-  if (introInfos) introInfos.classList.remove("hide");
-  if (opacityEl)  opacityEl.classList.remove("hide");
-}
+const calcContainer = document.querySelector("#calc-container")
 
-function limparTextoClasses(el) {
-  if (!el) return;
-  el.textContent = "";
-  el.className = ""; // remove todas as classes
-}
+const perder = document.querySelector("#perder")
+const manter = document.querySelector("#manter")
+const ganhar = document.querySelector("#ganhar")
 
-function valoresOK() {
-  const w = +weight?.value;
-  const h = +(height?.value || "").replace(",", ".");
-  // Limites CONSISTENTES (mesmos em todo o código)
-  if (!w || !h) return false;
-  if (w < 30 || w > 380) return false;
-  if (h < 1.30 || h > 2.20) return false;
-  return true;
-}
+const weight = document.querySelector("#peso")
+const height = document.querySelector("#altura")
 
-function calcImc() {
-  if (!valoresOK()) return null;
-  const w = +weight.value;
-  const h = +height.value.replace(",", ".");
-  const calc = w / (h * h);
-  return Number(calc.toFixed(1));
-}
+const calcBtn = document.querySelector("#btn-calc")
 
-// ======= INTERFACE / ESTILOS =======
-function HideH2eButtonsContainer() {
-  if (treinoAlimentacao) treinoAlimentacao.style.display = "none";
-  if (newH2) newH2.classList.add("hide");
-  if (buttonsContainer) buttonsContainer.classList.add("hidden");
-}
+const resultContainer = document.querySelector("#result")
+const resultMessage = document.querySelector("#result p")
+const alertMessage = document.querySelector("#result span")
+const setas = document.querySelector("#setas")
 
-function hideContainer() {
-  if (buttonsContainer) buttonsContainer.classList.remove("hidden");
-  if (treinoAlimentacaoContainer) treinoAlimentacaoContainer.classList.add("hide");
-  if (treinoAlimentacao) treinoAlimentacao.classList.add("hidden");
-  if (back) back.classList.add("hide");
-}
+let meta 
 
-function estilosMetas(meta1, meta2, meta3) {
-  if (newH2) {
-    newH2.style.marginTop = "2rem";
-    newH2.classList.remove("hide");
-    newH2.innerHTML = "Selecione uma opção";
-  }
-  if (calcContainer) calcContainer.classList.remove("hidden");
+// BUTTON DE VOLTAR
+const back = document.querySelector("#voltar")
+back.classList.add("hide")
 
-  meta1?.classList.add("select");
-  meta2?.classList.remove("select");
-  meta3?.classList.remove("select");
+// FUNÇÃO DE MOSTRAR O RESULTADO E VERIFICAR SE O IMC CONDIZ COM A OPÇÃO
+function showResult(){
+    window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  esconder()
 
-  if (meta1?.classList.contains("recomend")) {
-    hideContainer();
-    normalizarVisual();
-    meta1.classList.remove("recomend");
-    meta2?.classList.remove("hide");
-    meta3?.classList.remove("hide");
-  }
-}
+if(!meta){
+  newH2.classList.add("selectH2")
+  buttonsContainer.classList.add("border")
+  buttonsContainer.classList.add("hide")
+  newH2.style.marginTop = "0"
+  treinoAlimentacaoContainer.classList.add("hide")
+  return 
+  } 
 
-function normalizarCores(btn, cor) {
-  if (btn?.classList.contains("select")) {
-    btn.style.backgroundColor = cor;
-    if (newH2) newH2.classList.remove("selectH2");
-    if (buttonsContainer) buttonsContainer.classList.remove("border");
-    normalizarVisual();
-  }
-}
+  buttonShowTreinoAlimentacao.classList.remove("hide")
 
-function removerContainereMostrarMensagem() {
-  if (resultContainer) resultContainer.classList.remove("hide");
-  if (alertMessage) alertMessage.classList.add("hide");
-}
+  const imc = calcImc()
 
-function ShowRecomendOption(msg, hide1, hide2, destacar) {
-  if (alertMessage) {
-    alertMessage.classList.remove("hide");
-    alertMessage.textContent = msg;
-  }
+  if(!imc) return 
 
-  hide1?.classList.add("hide");
-  hide2?.classList.add("hide");
+  resultMessage.className = ""
 
-  if (destacar) {
-    destacar.style.backgroundColor = "rgb(9, 255, 0)";
-    destacar.classList.add("recomend");
-  }
-
-  if (newH2) newH2.classList.add("hide");
-  if (setas) setas.classList.remove("hide");
-}
-
-// ======= RESULTADO =======
-function showResult() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  esconder();
-
-  if (!meta) {
-    if (newH2) newH2.classList.add("selectH2");
-    if (buttonsContainer) {
-      buttonsContainer.classList.add("border");
-      buttonsContainer.classList.add("hide");
-    }
-    if (newH2) newH2.style.marginTop = "0";
-    if (treinoAlimentacaoContainer) treinoAlimentacaoContainer.classList.add("hide");
-    return;
-  }
-
-  buttonShowTreinoAlimentacao?.classList.remove("hide");
-
-  const imc = calcImc();
-  if (!imc) return;
-
-  if (resultMessage) resultMessage.className = "";
-  resultContainer?.classList.remove("hide");
+  resultContainer.classList.remove("hide")
 
   data.forEach((dados) => {
-    if (imc >= dados.min && imc <= dados.max) {
-      if (resultMessage)
-        resultMessage.innerHTML = `Seu IMC é de ${imc}, seu índice é ${dados.info}`;
-      alertMessage?.classList.add("hide");
 
-      switch (dados.info) {
-        case "Magreza":
-          resultMessage?.classList.add("low-extreme");
-          HideH2eButtonsContainer();
+  if (imc >= dados.min && imc <= dados.max) {
+
+    resultMessage.innerHTML = `Seu IMC é de ${imc}, seu índice é ${dados.info}`
+    alertMessage.classList.add("hide")
+
+  switch (dados.info) {
+      case "Magreza":
+          resultMessage.classList.add("low-extreme");
+          HideH2eButtonsContainer()
           break;
-        case "Normal":
-          resultMessage?.classList.add("normal");
-          HideH2eButtonsContainer();
+
+      case "Normal":
+          resultMessage.classList.add("normal");
+          HideH2eButtonsContainer()
           break;
-        case "Sobrepeso":
-          resultMessage?.classList.add("low-extreme");
-          HideH2eButtonsContainer();
+
+      case "Sobrepeso":
+          resultMessage.classList.add("low-extreme");
+          HideH2eButtonsContainer()
           break;
-        case "Obesidade":
-          resultMessage?.classList.add("extreme");
-          HideH2eButtonsContainer();
+
+      case "Obesidade":
+          resultMessage.classList.add("extreme");
+          HideH2eButtonsContainer()
           break;
-        case "Obesidade grave":
-          resultMessage?.classList.add("very-extreme");
-          HideH2eButtonsContainer();
+
+      case "Obesidade grave":
+          resultMessage.classList.add("very-extreme");
+          HideH2eButtonsContainer()
           break;
       }
 
-      // ===== Verificações meta x IMC =====
-      if (meta === "perder" && imc < 18.5) {
-        ShowRecomendOption(
-          `Seu índice já é de ${dados.info}. Por favor, clique na opção de Ganhar Peso.`,
-          perder, manter, ganhar
+   // VERIFICAR SE A OPÇÃO ESCOLHIDA CONDIZ COM O IMC DO USARIO 
+  if (meta === "perder" && imc < 18.4) {
+     ShowRecomendOption(
+        `seu indice já é de ${dados.info}, Por favor clique na opção de ganhar Peso`,
+        perder,
+        manter,
+        ganhar       
         );
-        hideContainer();
+          hideContainer()
+
       }
 
-      if (meta === "ganhar" && imc > 24.9) {
-        ShowRecomendOption(
-          `Seu índice já é de ${dados.info}. Por favor, clique na opção de Perder Peso.`,
-          ganhar, manter, perder
+  if (meta === "ganhar" && imc > 24.9) {
+     ShowRecomendOption(
+        `seu indice já é de ${dados.info}, Por favor clique na opção de perder Peso`,
+        ganhar,
+        manter,
+        perder        
         );
-        hideContainer();
-      }
+          hideContainer()
 
-      if (meta === "manter" && imc >= 25) {
-        ShowRecomendOption(
-          `Seu índice é de ${dados.info}. Por favor, clique na opção de Perder Peso.`,
-          ganhar, manter, perder
-        );
-        hideContainer();
-      }
+        }
 
-      if (meta === "manter" && imc <= 18.4) {
-        ShowRecomendOption(
-          `Seu índice é de ${dados.info}. Por favor, clique na opção de Ganhar Peso.`,
-          perder, manter, ganhar
+  if (meta === "manter" && imc >= 25) {
+     ShowRecomendOption(
+        `seu indice é de ${dados.info}, Por favor clique na opção de perder Peso`,
+        ganhar,
+        manter,
+        perder        
         );
-        hideContainer();
-      }
+          hideContainer()
 
-      if (meta === "ganhar" && dados.info === "Normal") {
-        ShowRecomendOption(
-          `Seu índice é de ${dados.info}. Por favor, clique na opção de Manter Peso.`,
-          perder, ganhar, manter
-        );
-        hideContainer();
-      }
+        }
 
-      if (meta === "perder" && dados.info === "Normal") {
-        ShowRecomendOption(
-          `Seu índice é de ${dados.info}. Por favor, clique na opção de Manter Peso.`,
-          perder, ganhar, manter
+  if (meta === "manter" && imc <= 18.4) {
+     ShowRecomendOption(
+       ` seu indice é de ${dados.info}, Por favor clique na opção de Ganhar Peso`,
+        perder,
+        manter,
+        ganhar        
         );
-        hideContainer();
+          hideContainer()
+
+        }
+
+  if (meta === "ganhar" && dados.info === "Normal") {
+     ShowRecomendOption(
+        `seu indice é de ${dados.info}, Por favor clique na opção de Manter Peso`,
+        perder,
+        ganhar,
+        manter        
+        );
+          hideContainer()
+
+        }
+
+  if (meta === "perder" && dados.info === "Normal") {
+     ShowRecomendOption(
+        `seu indice é de ${dados.info}, Por favor clique na opção de Manter Peso`,
+        perder,
+        ganhar,
+        manter        
+        );
+        hideContainer()
+        } 
       }
+    } 
+  )
+}
+
+// FUNÇÃO PARA APLICAR AS CLASSES CERTAS NOS BUTTONS DE ACORDO COM O IMC E A OPÇÃO SELECIONADA 
+function ShowRecomendOption(msg, hide1, hide2, destacar){
+  alertMessage.classList.remove("hide")
+  alertMessage.textContent = msg;
+
+  hide1.classList.add("hide");
+  hide2.classList.add("hide");
+
+  destacar.style.backgroundColor = "rgb(9, 255, 0)";
+  destacar.classList.add("recomend");
+
+  newH2.classList.add("hide")
+  setas.classList.remove("hide") 
+}
+
+// CALCULO IMC
+function calcImc(){
+  const weightValue = +weight.value 
+  const heightValue = +height.value.replace("," , ".")
+
+  if(!weightValue || !heightValue) return 
+
+  const calc = weightValue / (heightValue * heightValue)
+
+  return calc.toFixed(1)
+}
+
+// FUNÇÃO PARA AVALIAR SE NÃO EXISTEM VALORES / VERIFICA SE OS VALORES NÃO SÃO FORA DO NORMAL (EX: WEIGHT = 500 OU HEIGHT = 2,70)
+function validHeightAndWeight(){
+
+    const weightValue = +weight.value 
+    const heightValue = +height.value.replace("," , ".") 
+
+    if(calcContainer.classList.contains("hidden")) return 
+
+    resultMessage.classList.add("very-extreme") 
+
+    if(!weightValue || !heightValue){
+      removerContainereMostrarMensagem()
+      resultMessage.textContent = "digite valor em peso e altura"
+      newH2.style.marginTop = "-5rem"
+    } 
+    else if( weightValue >= 400 || /*weightValue >= 400 || */ heightValue > 2.20 || heightValue <= 1.30){
+      removerContainereMostrarMensagem()
+      resultMessage.textContent = "valores invalidos"
+      newH2.style.marginTop = "-5rem"
+      resultMessage.classList.add("very-extreme") 
     }
-  });
-}
-
-// ======= VALIDAÇÃO ENTRADAS =======
-function validHeightAndWeight() {
-  if (calcContainer?.classList.contains("hidden")) return;
-
-  resultMessage?.classList.add("very-extreme");
-
-  if (!weight?.value || !height?.value) {
-    removerContainereMostrarMensagem();
-    if (resultMessage) resultMessage.textContent = "Digite valor em peso e altura";
-    if (newH2) newH2.style.marginTop = "-5rem";
-  } else {
-    const w = +weight.value;
-    const h = +height.value.replace(",", ".");
-    if (w < 30 || w > 380 || h > 2.20 || h < 1.30) {
-      removerContainereMostrarMensagem();
-      if (resultMessage) resultMessage.textContent = "Valores inválidos (Peso: 30–380 kg, Altura: 1,30–2,20 m)";
-      if (newH2) newH2.style.marginTop = "-5rem";
-      resultMessage?.classList.add("very-extreme");
-    } else {
-      resultContainer?.classList.add("hide");
-      treinoAlimentacaoContainer?.classList.remove("hide");
-    }
+    else{
+      resultContainer.classList.add("hide")
+      treinoAlimentacaoContainer.classList.remove("hide")
   }
 }
 
-function verificarValores() {
-  if (!valoresOK()) return;
+// FUNÇÃO QUE LIMPA AS INFORMAÇÕES INSERIDAS E AS INFORMAÇÕES FORNECIDAS PELO SISTEMA 
+function cleanInfos(){
+    weight.value = ""
+    height.value = "" 
 
-  showResult();
-  cleanInputs();
-  calcContainer?.classList.add("hidden");
+    resultContainer.classList.add("hide")
+    setas.classList.add("hide")
+
+    resultMessage.textContent = ""
+    resultMessage.classList.value = ""
+
+    alertMessage.textContent = ""
+    
+    // lista das classes de estado
+const stateClasses = ["normal", "low-extreme", "extreme", "very-extreme"];
+
+// remove só essas classes, se existirem
+stateClasses.forEach(c => resultMessage.classList.remove(c));
+
+// depois adiciona a nova classe de estado, se precisar
+resultMessage.classList.add("extreme"); 
 }
 
-// ======= LIMPEZAS =======
-function cleanInfos() {
-  if (weight) weight.value = "";
-  if (height) height.value = "";
+function cleanInputs(){
+  weight.value = ""
+  height.value = ""
+}
 
-  resultContainer?.classList.add("hide");
-  setas?.classList.add("hide");
+// ESCONDER O H2 E O CONTAINER DE BUTTONS
+function HideH2eButtonsContainer(){
+treinoAlimentacao.style.display = "none"
+newH2.classList.add("hide")
+buttonsContainer.classList.add("hidden")
+} 
 
-  if (resultMessage) {
-    resultMessage.textContent = "";
-    resultMessage.className = "";
+// SE O IMC NÃO CONDIZ COM A OPÇÃO SELECIONADA ESSA FUNÇÃO É CHAMADA PRA APLICAR OS ESTILOS
+function hideContainer(){
+buttonsContainer.classList.remove("hidden")
+treinoAlimentacaoContainer.classList.add("hide")
+treinoAlimentacao.classList.add("hidden")
+back.classList.add("hide")
+}
+
+// FUNÇÃO PARA ESTILIZAR OS BUTTONS QUANDO VOCÊ ESCOLHE UMA OPÇÃO OU QUANDO UMA OPÇÃO É RECOMENDADA
+function estilosMetas(meta1, meta2, meta3){
+  newH2.style.marginTop = "2rem"
+  newH2.classList.remove("hide")
+  newH2.innerHTML = "Selecione uma opção"
+  calcContainer.classList.remove("hidden")
+
+  meta1.classList.add("select")
+  meta2.classList.remove("select")
+  meta3.classList.remove("select")
+
+  if(meta1.classList.contains("recomend")){
+    hideContainer()
+    normalizarVisual()
+    meta1.classList.remove("recomend")
+    meta2.classList.remove("hide")
+    meta3.classList.remove("hide")
   }
-
-  if (alertMessage) {
-    alertMessage.textContent = "";
-    alertMessage.className = "";
+}
+// NORMALIZA AS CORES DOS BUTTONS
+function normalizarCores(meta, cor){
+  if(meta.classList.contains("select")){
+    meta.style.backgroundColor = cor
+    newH2.classList.remove("selectH2")
+    buttonsContainer.classList.remove("border")
+    normalizarVisual()
   }
 }
 
-function cleanInputs() {
-  if (weight) weight.value = "";
-  if (height) height.value = "";
+// REMOVE O CONTAINER E MOSTRA A MENSAGEM DIZENDO QUE OS VALORES SÃO INVALIDOS OU PRECISAM SER INSERIDOS
+function removerContainereMostrarMensagem(){
+  resultContainer.classList.remove("hide")
+  alertMessage.classList.add("hide")
 }
 
-// ======= EVENTOS DE METAS =======
-perder?.addEventListener("click", () => {
-  meta = "perder";
-  estilosMetas(perder, manter, ganhar);
-  normalizarCores(perder, "red");
-  cleanInfos();
-});
+// VERIFICA SE OS VALORES SÃO VALIDOS
+function verificarValores(){
+    const weightValue = +weight.value;
+    const heightValue = +height.value.replace(",", ".");
 
-manter?.addEventListener("click", () => {
-  meta = "manter";
-  estilosMetas(manter, perder, ganhar);
-  normalizarCores(manter, "rgb(221, 108, 15)");
-  cleanInfos();
-});
+    if (!weightValue || !heightValue || weightValue >= 400 || /*weightValue >= 400 || */ heightValue >= 2.20 /*|| heightValue <= 1 || heightValue < 1.10 ||*/ || 
+    heightValue <= 1.30) return;
 
-ganhar?.addEventListener("click", () => {
-  meta = "ganhar";
-  estilosMetas(ganhar, manter, perder);
-  normalizarCores(ganhar, "rgb(14, 226, 42)");
-  cleanInfos();
-});
+    showResult();
+    cleanInputs()
 
-// ======= CALCULAR =======
-calcBtn?.addEventListener("click", () => {
-  validHeightAndWeight();
-  verificarValores();
+    calcContainer.classList.add("hidden")
+}
+
+// EVENTOS DOS BUTTONS
+perder.addEventListener("click", () =>{
+  meta = "perder"
+
+  estilosMetas(perder, manter, ganhar)
+  normalizarCores(perder, "red")
+  cleanInfos()
+})
+
+manter.addEventListener("click", () =>{
+  meta = "manter"
+
+  estilosMetas(manter, perder, ganhar)
+  normalizarCores(manter, "rgb(221, 108, 15)")
+
+  cleanInfos()
+})
+
+ganhar.addEventListener("click", () =>{
+  meta = "ganhar"
+
+  estilosMetas(ganhar, manter, perder)
+  normalizarCores(ganhar, "rgb(14, 226, 42)")
+
+  cleanInfos()
+})
+
+calcBtn.addEventListener("click", (e) => { 
+    validHeightAndWeight();
+    verificarValores()
+    /*normalizarEstilo()*/ 
+
 });
 
 document.addEventListener("keyup", (e) => {
-  if (e.code === "Enter") {
-    if (calcBtn) {
-      calcBtn.style.backgroundColor = "#0056b3";
-      setTimeout(() => (calcBtn.style.backgroundColor = "#007bff"), 400);
-    }
 
-    validHeightAndWeight();
+if(e.code === "Enter"){
 
-    const w = +weight?.value;
-    const h = +(height?.value || "").replace(",", ".");
+  calcBtn.style.backgroundColor = "#0056b3"
 
-    if (!w || !h || w > 380 || w < 30 || h > 2.20 || h < 1.30) return;
+  setTimeout(()=>{
 
-    showResult();
-    cleanInputs();
-    calcContainer?.classList.add("hidden");
+  calcBtn.style.backgroundColor = "#007bff"
+
+  },400)
+
+  validHeightAndWeight();
+
+    // Se tiver erro, não continua
+  const weightValue = +weight.value;
+  const heightValue = +height.value.replace(",", ".");
+
+  if (!weightValue || !heightValue || weightValue >= 400 || heightValue >= 2.20 || heightValue < 1.30) return;
+
+  showResult()
+  cleanInputs()
+
+  calcContainer.classList.add("hidden")
+  /*normalizarEstilo()*/ 
+  } 
+})
+
+// PARTE DE TREINO (PARTE 2 DO PROJETO)
+const buttonShowTreinoAlimentacao = document.querySelector("#button-show-container")
+const treinoAlimentacao = document.querySelector("#treino-alimentacao")
+const treinoAlimentacaoContainer = document.querySelector("#container-treino-alimentacao")
+const plano = document.querySelector("#plano")
+
+plano.classList.add("hide")
+
+const buttonFechar = document.createElement("button")
+buttonFechar.id = "fechar"
+buttonFechar.innerHTML = "X"
+buttonFechar.classList.add("hide")
+
+treinoAlimentacao.classList.remove("hide")
+
+// MOSTRAR TREINO / ALIMENTAÇÃO
+buttonShowTreinoAlimentacao.addEventListener("click", (e) => {
+  treinoAlimentacao.style.display = "flex"
+  mostrarContainer()
+  plano.classList.remove("hide")
+  plano.innerHTML = `Treino / Alimentação pra quem quer ${meta} peso`
+})
+
+function mostrarContainer(){
+  treinoAlimentacao.classList.remove("hidden")
+  resultContainer.classList.add("hide")
+  buttonShowTreinoAlimentacao.classList.add("hide")
+  back.classList.remove("hide")
+}
+
+back.addEventListener("click", () => {
+  zerarContainers()
+  normalizarVisual()
+})
+
+// FUÇÃO PRA NORMALIZAR O VISUAL INICIAL 
+function normalizarVisual(){
+const introInfos = document.querySelector("#intro-infos")
+const opacity = document.querySelector("#opacity")
+
+ imgIntro.classList.remove("hidden")
+ buttons.style.marginTop = "0"
+ introInfos.classList.remove("hide")
+ opacity.classList.remove("hide")
+}
+
+// FUNÇÃO PRA VOLTAR PRO INCIO DO PROJETO / LIMPAR TODAS AS INFORMAÇÕES QUE FORAM FORNECIDAS
+function zerarContainers(){
+  buttonFecharTreino()
+  fecharContainerAlimentacao()
+
+  selects.forEach((select)=>{
+    select.selectedIndex = 0
+  })
+
+  plano.classList.add("hide")
+  back.classList.add("hide")
+
+  newH2.classList.remove("hide")
+  buttonsContainer.classList.remove("hidden")
+  calcContainer.classList.remove("hidden")
+  buttonShowTreinoAlimentacao.classList.add("hide")
+  treinoAlimentacao.classList.add("hidden")
+  treinoAlimentacaoContainer.classList.add("hide")
+}
+
+const buttonTreino = document.querySelectorAll(".button-treino")
+const containerTreino = document.querySelector("#treino-container")
+const treinoStyle = document.querySelector("#treino")
+
+// DIV DE TREINO
+const div = document.createElement("div")
+div.id = "gerar-treino"
+
+function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
+  div.classList.remove("hide")
+  div.innerHTML = ""
+
+  let treinos = []
+
+  treinos.push(treino1, treino2, treino3)
+
+  const divImg = document.createElement("div")
+  divImg.id = "div-img"
+
+  const imgTreino1 = document.createElement("img")
+  imgTreino1.id = "img-treino1"
+  imgTreino1.src = `./img/${imagem1}`
+
+  const imgTreino2 = document.createElement("img")
+  imgTreino2.id = "img-treino1"
+  imgTreino2.src = `./img/${imagem2}`
+
+  const grupoMuscular = document.createElement("h3")
+  grupoMuscular.id = "grupo-muscular"
+  grupoMuscular.textContent = grupo
+
+  const ulTreino = document.createElement("ul")
+  ulTreino.id = "ul-treino"
+
+  treinos.forEach((treino)=>{
+
+  if (treino === null) return;
+  const listaTreino = document.createElement("li");
+
+  listaTreino.id = "lista-treino";
+  listaTreino.textContent = Array.isArray(treino) ? treino.join(" / ") : treino;
+  ulTreino.appendChild(listaTreino);
+}) 
+
+  const diaTreino = document.createElement("h3")
+  diaTreino.id = "dia-treino"
+  diaTreino.textContent = dia
+
+  divImg.appendChild(imgTreino1)
+  divImg.appendChild(imgTreino2)
+  div.appendChild(diaTreino)
+  div.appendChild(grupoMuscular)
+  div.appendChild(ulTreino)
+  div.appendChild(divImg)
+
+  estilizarContainerTreino()
+}
+
+/*function normalizarEstilo() {
+  if(resultMessage.classList.contains("very-extreme") ||
+    resultMessage.classList.contains("extreme") ||
+    resultMessage.classList.contains("low-extreme") || 
+    resultMessage.classList.contains("normal")){
+    buttonShowTreinoAlimentacao.style.marginTop = "-105rem"
+    buttonShowTreinoAlimentacao.style.marginLeft = "1vh"
+    treinoAlimentacao.style.marginTop = "-290vh"
+    treinoAlimentacao.style.marginLeft = "25vh"
+    plano.style.marginTop = "-321vh"
+    plano.style.marginLeft = "10vh"
   }
-});
+}*/ 
 
-// ==============================
-// PARTE 2 — TREINO / ALIMENTAÇÃO
-// ==============================
-
-// Estado de plano
-plano?.classList.add("hide");
-
-// Dois botões de fechar independentes
-const buttonFecharTreinoEl = document.createElement("button");
-buttonFecharTreinoEl.id = "fechar-treino";
-buttonFecharTreinoEl.textContent = "X";
-buttonFecharTreinoEl.classList.add("hide");
-
-const buttonFecharAlimEl = document.createElement("button");
-buttonFecharAlimEl.id = "fechar-alimentacao";
-buttonFecharAlimEl.textContent = "X";
-buttonFecharAlimEl.classList.add("hide");
-
-// Garantir visibilidade inicial do wrapper
-treinoAlimentacao?.classList.remove("hide");
-
-// Mostrar container Treino/Alimentação
-buttonShowTreinoAlimentacao?.addEventListener("click", () => {
-  if (treinoAlimentacao) treinoAlimentacao.style.display = "flex";
-  mostrarContainer();
-  plano?.classList.remove("hide");
-  if (plano) plano.innerHTML = `Treino / Alimentação pra quem quer ${meta} peso`;
-});
-
-function mostrarContainer() {
-  treinoAlimentacao?.classList.remove("hidden");
-  resultContainer?.classList.add("hide");
-  buttonShowTreinoAlimentacao?.classList.add("hide");
-  back?.classList.remove("hide");
+// ESTILIZAR O CONTAINER DE TREINO PRA PREENCHER 100% DO CONTAINER E MOSTRAR O TREINO SELECIONADO
+function estilizarContainerTreino(){
+  alimentacaoContainer.classList.add("hide")
+  treinoStyle.style.width = "100%"
+  treinoStyle.appendChild(div)
+  buttonFechar.classList.remove("hide")
+  div.appendChild(buttonFechar)
 }
 
-back?.classList.add("hide");
-back?.classList.add("hide");
-back?.addEventListener("click", () => {
-  zerarContainers();
-  normalizarVisual();
-});
+buttonFechar.addEventListener("click", () => {
+  buttonFecharTreino()
+})
 
-// Reset geral para voltar ao início
-function zerarContainers() {
-  buttonFecharTreinoFn();
-  fecharContainerAlimentacao();
-
-  selects.forEach((select) => (select.selectedIndex = 0));
-
-  plano?.classList.add("hide");
-  back?.classList.add("hide");
-
-  newH2?.classList.remove("hide");
-  buttonsContainer?.classList.remove("hidden");
-  calcContainer?.classList.remove("hidden");
-  buttonShowTreinoAlimentacao?.classList.add("hide");
-  treinoAlimentacao?.classList.add("hidden");
-  treinoAlimentacaoContainer?.classList.add("hide");
+function buttonFecharTreino(){
+  treinoStyle.style.width = "50%"
+  div.classList.add("hide")
+  containerTreino.classList.remove("hide")
+  alimentacaoContainer.classList.remove("hide")
 }
 
-// ---------- TREINO ----------
-const divTreino = document.createElement("div");
-divTreino.id = "gerar-treino";
-
-function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2) {
-  divTreino.classList.remove("hide");
-  divTreino.innerHTML = "";
-
-  const treinos = [];
-  treinos.push(treino1, treino2, treino3);
-
-  const divImg = document.createElement("div");
-  divImg.id = "div-img";
-
-  const imgTreino1 = document.createElement("img");
-  imgTreino1.id = "img-treino1";
-  imgTreino1.src = `./img/${imagem1}`;
-
-  const imgTreino2 = document.createElement("img");
-  imgTreino2.id = "img-treino2";
-  imgTreino2.src = `./img/${imagem2}`;
-
-  const grupoMuscular = document.createElement("h3");
-  grupoMuscular.id = "grupo-muscular";
-  grupoMuscular.textContent = grupo;
-
-  const ulTreino = document.createElement("ul");
-  ulTreino.id = "ul-treino";
-
-  treinos.forEach((treino) => {
-    if (treino == null) return;
-    const li = document.createElement("li");
-    li.id = "lista-treino";
-    li.textContent = Array.isArray(treino) ? treino.join(" / ") : treino;
-    ulTreino.appendChild(li);
-  });
-
-  const diaTreino = document.createElement("h3");
-  diaTreino.id = "dia-treino";
-  diaTreino.textContent = dia;
-
-  divImg.appendChild(imgTreino1);
-  divImg.appendChild(imgTreino2);
-
-  divTreino.appendChild(diaTreino);
-  divTreino.appendChild(grupoMuscular);
-  divTreino.appendChild(ulTreino);
-  divTreino.appendChild(divImg);
-
-  estilizarContainerTreino();
-}
-
-function estilizarContainerTreino() {
-  alimentacaoContainer?.classList.add("hide");
-  if (treinoStyle) {
-    treinoStyle.style.width = "100%";
-    treinoStyle.appendChild(divTreino);
-  }
-  buttonFecharTreinoEl.classList.remove("hide");
-  divTreino.appendChild(buttonFecharTreinoEl);
-}
-
-buttonFecharTreinoEl.addEventListener("click", buttonFecharTreinoFn);
-
-function buttonFecharTreinoFn() {
-  if (treinoStyle) treinoStyle.style.width = "50%";
-  divTreino.classList.add("hide");
-  containerTreino?.classList.remove("hide");
-  alimentacaoContainer?.classList.remove("hide");
-}
-
-// Mapear treinos por meta/dia
-function criarTreino(metaKey, dadosTreino) {
+// INFOS DOS TREINOS
+function criarTreino(meta, dadosTreino) {
   return {
-    segunda: dadosTreino[metaKey].segunda,
-    terca:   dadosTreino[metaKey].terca,
-    quarta:  dadosTreino[metaKey].quarta,
-    quinta:  dadosTreino[metaKey].quinta,
-    sexta:   dadosTreino[metaKey].sexta,
+    segunda: dadosTreino[meta].segunda,
+    terca: dadosTreino[meta].terca,
+    quarta: dadosTreino[meta].quarta,
+    quinta: dadosTreino[meta].quinta,
+    sexta: dadosTreino[meta].sexta,
   };
 }
 
 const treinosPorMeta = {
-  perder: criarTreino("perder", treinosPerder),
-  manter: criarTreino("manter", treinosManter),
-  ganhar: criarTreino("ganhar", treinosGanhar),
+  perder: criarTreino('perder', treinosPerder),
+  manter: criarTreino('manter', treinosManter),
+  ganhar: criarTreino('ganhar', treinosGanhar),
 };
 
-buttonTreino.forEach((treinoBtn) => {
+// FAZER UM LOOP NOS BUTTONS DE TREINO E MOSTRAR O TREINO CORRESPONDENTE
+buttonTreino.forEach((treinoBtn)=>{
   treinoBtn.addEventListener("click", () => {
-    buttonFecharTreinoEl.style.marginTop = "0rem";
-    containerTreino?.classList.add("hide");
-    const treinoDia = treinoBtn.parentElement; // ex: div#segunda
+  buttonFechar.style.marginTop = "0rem"
 
-    if (meta && treinoDia?.id) {
-      const treino = treinosPorMeta[meta][treinoDia.id];
+  containerTreino.classList.add("hide") 
+  const treinoDia = treinoBtn.parentElement
+    if(meta){
+      const treino = treinosPorMeta[meta][treinoDia.id]
 
-      if (treinoDia.id === "segunda") {
-        mostrarTreino(
-          treino.peito, treino.ombro, treino.triceps,
-          "Segunda Feira", "Peito / Ombro / Tríceps",
-          "treinopeito.avif", "treinopeito2.webp"
-        );
-      } else if (treinoDia.id === "terca") {
-        mostrarTreino(
-          treino.costas, treino.biceps, null,
-          "Terça Feira", "Costas / Bíceps",
-          "treinocostas.webp", "treinocostas2.jpg"
-        );
-      } else if (treinoDia.id === "quarta") {
-        mostrarTreino(
-          treino.pernaCompleto, null, null,
-          "Quarta Feira", "Perna Completo",
-          "treinoperna.webp", "treinoperna2.jpg"
-        );
-      } else if (treinoDia.id === "quinta") {
-        mostrarTreino(
-          treino.ombroIsolado, null, null,
-          "Quinta Feira", "Ombro Isolado",
-          "treinoombro.jpg", "treinoombro2.jpg"
-        );
-      } else if (treinoDia.id === "sexta") {
-        mostrarTreino(
-          treino.biceps, treino.triceps, null,
-          "Sexta Feira", "Bíceps / Tríceps",
-          "treinobiceps.jpg", "treinobiceps2.webp"
-        );
+      if(treinoDia.id === "segunda"){
+      mostrarTreino(treino.peito, treino.ombro, treino.triceps, treinoDia.id.replace(treinoDia.id, `Segunda Feira`), "Peito / Ombro / Tríceps", "treinopeito.avif", "treinopeito2.webp")
+      } 
+      else if(treinoDia.id === "terca"){
+        mostrarTreino(treino.costas, treino.biceps, null, treinoDia.id.replace(treinoDia.id, `Terça Feira`), "Costas / Biceps", "treinocostas.webp", "treinocostas2.jpg")
+      } 
+      else if(treinoDia.id === "quarta"){
+        mostrarTreino(treino.pernaCompleto, null, null, treinoDia.id.replace(treinoDia.id, `Quarta Feira`), "Perna Completo", "treinoperna.webp", "treinoperna2.jpg")
+      } 
+      else if(treinoDia.id === "quinta"){
+        mostrarTreino(treino.ombroIsolado, null, null, treinoDia.id.replace(treinoDia.id, `Quinta Feira`), "Ombro Isolado", "treinoombro.jpg", "treinoombro2.jpg")
+      } 
+      else if(treinoDia.id === "sexta"){
+        mostrarTreino(treino.biceps, treino.triceps, null, treinoDia.id.replace(treinoDia.id, `Sexta Feira`), "Biceps / Tríceps", "treinobiceps.jpg", "treinobiceps2.webp")
       }
     }
-  });
-});
+  })
+})
 
-// ---------- ALIMENTAÇÃO ----------
-const divRefeicao = document.createElement("div");
-divRefeicao.id = "div-refeicao";
+// ALIMENTAÇÃO
+const alimentacaoContainer = document.querySelector("#alimentacao")
+const containerAlimentacao = document.querySelector("#alimentacao-container")
+const selects = document.querySelectorAll(".select-ref");
 
-function mostrarRefeicao(dia, refeicaoTipo, refeicao, macro, imagem) {
-  const diaSemana = document.createElement("h3");
-  diaSemana.id = "dia-semana";
-  diaSemana.textContent = dia;
+const divRefeicao = document.createElement("div")
 
-  const divImg = document.createElement("div");
-  divImg.id = "div-img";
+// MOSTRAR REFEIÇÕES
+function mostrarRefeicao(dia, refeicaoTipo, refeicao, macro, imagem){
 
-  const img = document.createElement("img");
-  img.id = "img-ref";
-  img.src = `./img/${imagem}`;
+  const diaSemana = document.createElement("h3")
+  diaSemana.id = "dia-semana"
+  diaSemana.textContent = dia
 
-  const tipoRefeicao = document.createElement("h4");
-  tipoRefeicao.id = "tipo-refeicao";
-  tipoRefeicao.textContent = refeicaoTipo;
+  const divImg = document.createElement("div")
+  divImg.id = "div-img"
 
-  const ulRef = document.createElement("ul");
-  ulRef.id = "ul-refeicao";
+  const img = document.createElement("img")
+  img.id = "img-ref"
+  img.src = `./img/${imagem}`
 
-  const ulMacro = document.createElement("ul");
-  ulMacro.id = "ul-Macro";
+  const tipoRefeicao = document.createElement("h4")
+  tipoRefeicao.id = "tipo-refeicao"
+  tipoRefeicao.textContent = refeicaoTipo
 
-  const liRef = document.createElement("li");
-  liRef.id = "lista-refeicao";
-  liRef.textContent = refeicao;
+  divRefeicao.id = "div-refeicao"
 
-  const liMacro = document.createElement("li");
-  liMacro.id = "lista-macro";
-  liMacro.textContent = macro;
+  const ulRef = document.createElement("ul")
+  ulRef.id = "ul-refeicao"
 
-  ulRef.appendChild(liRef);
-  ulMacro.appendChild(liMacro);
+  const ulMacro = document.createElement("ul")
+  ulMacro.id = "ul-Macro" 
 
-  divRefeicao.innerHTML = "";
-  divRefeicao.appendChild(diaSemana);
-  divRefeicao.appendChild(tipoRefeicao);
-  divRefeicao.appendChild(ulRef);
-  divRefeicao.appendChild(ulMacro);
-  divRefeicao.appendChild(img);
+  const listaRef = document.createElement("li")
+  listaRef.id = "lista-refeicao"
+  listaRef.textContent = refeicao
 
-  estilizarRefeicao();
+  const listaMacro = document.createElement("li")
+  listaMacro.id = "lista-macro"
+  listaMacro.textContent = macro
+
+  ulRef.appendChild(listaRef) 
+  ulMacro.appendChild(listaMacro) 
+  divRefeicao.appendChild(diaSemana)
+  divRefeicao.appendChild(tipoRefeicao)
+  divRefeicao.appendChild(ulRef)
+  divRefeicao.appendChild(ulMacro)
+  divRefeicao.appendChild(img)
+
+  console.log(divRefeicao)
+
+  estilizarRefeicao()
 }
 
-function estilizarRefeicao() {
-  alimentacaoContainer?.appendChild(divRefeicao);
-  buttonFecharAlimEl.classList.remove("hide");
-  alimentacaoContainer?.appendChild(buttonFecharAlimEl);
-  if (alimentacaoContainer) alimentacaoContainer.style.width = "100%";
-  containerAlimentacao?.classList.add("hide");
-  treinoStyle?.classList.add("hide");
-  divRefeicao.classList.remove("hide");
+// ESTILIZAR O COONTAINER DE REFEIÇÃO PRA OCUPAR 100% DO CONTAINER E MOSTRAR A REFEIÇÃO 
+function estilizarRefeicao(){
+  alimentacaoContainer.appendChild(divRefeicao) 
+  buttonFechar.classList.remove("hide")
+  alimentacaoContainer.appendChild(buttonFechar)
+  alimentacaoContainer.style.width = "100%"
+  containerAlimentacao.classList.add("hide")
+  treinoStyle.classList.add("hide")
+  divRefeicao.classList.remove("hide")
+}
+ buttonFechar.addEventListener("click", () => {
+  fecharContainerAlimentacao()
+})
+
+function fecharContainerAlimentacao(){
+    buttonFechar.classList.add("hide")
+    treinoStyle.classList.remove("hide")
+    divRefeicao.classList.add("hide")
+    alimentacaoContainer.style.width = "50%"
+    containerAlimentacao.classList.remove("hide")
+    selects.forEach((select)=>{
+    select.selectedIndex = 0
+  })
 }
 
-buttonFecharAlimEl.addEventListener("click", fecharContainerAlimentacao);
-
-function fecharContainerAlimentacao() {
-  buttonFecharAlimEl.classList.add("hide");
-  treinoStyle?.classList.remove("hide");
-  divRefeicao.classList.add("hide");
-  if (alimentacaoContainer) alimentacaoContainer.style.width = "50%";
-  containerAlimentacao?.classList.remove("hide");
-  selects.forEach((select) => (select.selectedIndex = 0));
-}
-
-// Dias (labels)
+// INFOS DOS DIAS 
 const nomesDias = {
   "select-segunda": "Segunda Feira",
-  "select-terca":   "Terça Feira",
-  "select-quarta":  "Quarta Feira",
-  "select-quinta":  "Quinta Feira",
-  "select-sexta":   "Sexta Feira",
-  "select-sabado":  "Sábado",
-  "select-domingo": "Domingo",
+  "select-terca": "Terça Feira",
+  "select-quarta": "Quarta Feira",
+  "select-quinta": "Quinta Feira",
+  "select-sexta": "Sexta Feira",
+  "select-sabado": "Sábado",
+  "select-domingo": "Domingo"
 };
 
-// Tipos de refeição (labels)
+// INFOS DAS REFEIÇÕES
 const nomesRefeicoes = {
-  cafe:   "Café da manhã",
+  cafe: "Café da manhã",
   almoco: "Almoço",
   lanche: "Lanche da tarde",
-  janta:  "Janta",
+  janta: "Janta"
 };
 
-// Imagens por refeição
+// INFOS DAS IMAGENS
 const imagensRefeicoes = {
-  cafe:   "cafemanha.webp",
+  cafe: "cafemanha.webp",
   almoco: "almoco.png",
   lanche: "lanche.webp",
-  janta:  "janta.jpg",
+  janta: "janta.jpg"
 };
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
+// LOOP NOS SELECTS PARA MOSTRAR A REFEIÇÃO CORRESPONDENTE
 selects.forEach((select) => {
   select.addEventListener("change", () => {
-    buttonFecharAlimEl.style.marginTop = "-1rem";
+    buttonFechar.style.marginTop = "-1rem"
     divRefeicao.innerHTML = "";
 
-    const diaId = select.id;                  // "select-segunda"
-    const diaChave = diaId.replace("select-", ""); // "segunda"
-    const refeicaoTipo = select.value;        // "cafe" | "almoco" | "lanche" | "janta"
+    const diaId = select.id; // ex: "select-segunda"
+    const diaChave = diaId.replace("select-", ""); // ex: "segunda"
+    const refeicaoTipo = select.value; // ex: "cafe"
 
     const nomeDia = nomesDias[diaId];
     const nomeRefeicao = nomesRefeicoes[refeicaoTipo];
@@ -702,25 +722,36 @@ selects.forEach((select) => {
     const refPorMeta = {
       perder: refDiasPerder,
       manter: refDiasManter,
-      ganhar: refDiasGanhar,
+      ganhar: refDiasGanhar
     };
 
     const referencias = refPorMeta[meta];
-    if (!referencias) return;
 
     referencias.forEach((ref) => {
-      const nomeRefeicaoProp = `${refeicaoTipo}${capitalize(diaChave)}`;      // p.ex. cafeSegunda
-      const nomeMacroProp    = `macros${capitalize(refeicaoTipo)}${capitalize(diaChave)}`; // p.ex. macrosCafeSegunda
+      const nomeRefeicaoProp = `${refeicaoTipo}${capitalize(diaChave)}`;
+      const nomeMacroProp = `macros${capitalize(refeicaoTipo)}${capitalize(diaChave)}`;
 
       if (ref[nomeRefeicaoProp] && ref[nomeMacroProp]) {
         mostrarRefeicao(
           nomeDia,
           nomeRefeicao,
-          Array.isArray(ref[nomeRefeicaoProp]) ? ref[nomeRefeicaoProp].join(" / ") : String(ref[nomeRefeicaoProp]),
-          Array.isArray(ref[nomeMacroProp]) ? ref[nomeMacroProp].join(". ") : String(ref[nomeMacroProp]),
+          ref[nomeRefeicaoProp].join(" / "),
+          ref[nomeMacroProp].join(". "),
           imagem
         );
       }
     });
   });
 });
+
+// Função auxiliar para capitalizar
+function capitalize(str){
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+import treinosPerder from "./treinos/treinoperder.js";
+import treinosManter from "./treinos/treinomanter.js";
+import treinosGanhar from "./treinos/treinoganhar.js";
+import refDiasPerder from "./refeicoes/refeicoesperder.js"
+import refDiasManter from "./refeicoes/refeicoesmanter.js";
+import refDiasGanhar from "./refeicoes/refeicoesganhar.js";
