@@ -30,7 +30,7 @@ imgIntro.classList.add("hidden")
 opacity.classList.add("hide")
 infosIntro.classList.add("hide")
 buttons.style.marginTop = "-60vh"
-}
+} 
 
 const buttonsContainer = document.querySelector("#buttons-container")
 
@@ -126,7 +126,6 @@ if(!meta){
         ganhar       
         );
           hideContainer()
-
       }
 
   if (meta === "ganhar" && imc > 24.9) {
@@ -391,7 +390,7 @@ if(e.code === "Enter"){
   cleanInputs()
 
   calcContainer.classList.add("hidden")
-  /*normalizarEstilo()*/ 
+  /*normalizarEstilo()*/
   } 
 })
 
@@ -519,7 +518,7 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
   estilizarContainerTreino()
 }
 
-/*function normalizarEstilo() {
+function normalizarEstilo(){
   if(resultMessage.classList.contains("very-extreme") ||
     resultMessage.classList.contains("extreme") ||
     resultMessage.classList.contains("low-extreme") || 
@@ -531,7 +530,15 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
     plano.style.marginTop = "-321vh"
     plano.style.marginLeft = "10vh"
   }
-}*/ 
+}
+
+
+window.addEventListener("keydown", (event) => {
+  // verifica se é a tecla Enter
+  if (event.key === "Enter" && window.innerWidth <= 768) {
+    normalizarEstilo();
+  }
+}); 
 
 // ESTILIZAR O CONTAINER DE TREINO PRA PREENCHER 100% DO CONTAINER E MOSTRAR O TREINO SELECIONADO
 function estilizarContainerTreino(){
