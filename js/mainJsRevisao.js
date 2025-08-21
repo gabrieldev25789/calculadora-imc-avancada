@@ -24,7 +24,6 @@ const telaPreta = document.querySelector("#telaPreta")
 
 const buttons = document.querySelector("#buttons")
 
-
 function esconder(){
 imgIntro.classList.add("hidden")
 opacity.classList.add("hide")
@@ -338,7 +337,10 @@ perder.addEventListener("click", () =>{
 
   estilosMetas(perder, manter, ganhar)
   normalizarCores(perder, "red")
+  imgIntro.style.display = "flex"
+
   cleanInfos()
+
 })
 
 manter.addEventListener("click", () =>{
@@ -346,6 +348,7 @@ manter.addEventListener("click", () =>{
 
   estilosMetas(manter, perder, ganhar)
   normalizarCores(manter, "rgb(221, 108, 15)")
+  imgIntro.style.display = "flex"
 
   cleanInfos()
 })
@@ -355,6 +358,7 @@ ganhar.addEventListener("click", () =>{
 
   estilosMetas(ganhar, manter, perder)
   normalizarCores(ganhar, "rgb(14, 226, 42)")
+  imgIntro.style.display = "flex"
 
   cleanInfos()
 })
@@ -362,8 +366,8 @@ ganhar.addEventListener("click", () =>{
 calcBtn.addEventListener("click", (e) => { 
     validHeightAndWeight();
     verificarValores()
-    /*normalizarEstilo()*/ 
-
+    normalizarEstiloResponsivo()
+    /*ajustarImgResponsivo()*/
 });
 
 document.addEventListener("keyup", (e) => {
@@ -518,7 +522,7 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
   estilizarContainerTreino()
 }
 
-function normalizarEstilo(){
+/*function normalizarEstiloResponsivo(){
   if(resultMessage.classList.contains("very-extreme") ||
     resultMessage.classList.contains("extreme") ||
     resultMessage.classList.contains("low-extreme") || 
@@ -531,16 +535,32 @@ function normalizarEstilo(){
     plano.style.marginLeft = "10vh"
   }
 }
+*/
 
+/*function ajustarImgResponsivo(){
+  imgIntro.style.display = "none"
+  buttons.style.marginTop = "0"
+  resultContainer.style.marginTop = "4rem"
+  calcContainer.style.marginTop = "20rem"
+  calcContainer.style.marginLeft = "6rem"
+  buttons.style.marginTop = "0rem"
+  buttons.style.marginBottom = "-20rem"
+  opacity.style.marginTop = "-20000px"
+  infosIntro.style.marginTop = "-20000px"
+}
+*/
 
 window.addEventListener("keydown", (event) => {
   // verifica se é a tecla Enter
   if (event.key === "Enter" && window.innerWidth <= 768) {
-    normalizarEstilo();
-  }
-}); 
+    /*ajustarImgResponsivo/*()*/
+    /*normalizarEstiloResponsivo()*/
+    }
+  }); 
+
 
 // ESTILIZAR O CONTAINER DE TREINO PRA PREENCHER 100% DO CONTAINER E MOSTRAR O TREINO SELECIONADO
+
 function estilizarContainerTreino(){
   alimentacaoContainer.classList.add("hide")
   treinoStyle.style.width = "100%"
@@ -560,7 +580,8 @@ function buttonFecharTreino(){
   alimentacaoContainer.classList.remove("hide")
 }
 
-// INFOS DOS TREINOS
+// INFOS DOS TREINOS*/
+
 function criarTreino(meta, dadosTreino) {
   return {
     segunda: dadosTreino[meta].segunda,
