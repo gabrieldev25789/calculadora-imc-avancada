@@ -572,9 +572,13 @@ span {
         font-weight: bold;
         width: 100vh;
         height: 6.5rem;
-        margin-bottom: 8rem;
-        
+        margin-bottom: 8rem;   
     }
+    #button-show-container{
+        margin-top: -1700px;
+        margin-left: 54px;
+    }
+
     #result p {
         font-size: 1.6rem;
         margin-bottom: 1rem !important;
@@ -599,16 +603,75 @@ span {
         transform: scaleX(-1);
         animation: balancoEsquerda 0.4s infinite alternate ease-in-out;
     }
-    .plano {
+    #plano {
+        width: 100vh;
         margin-top: -320vh;
         margin-left: 2.5rem;
     }
-    #treino-alimentacao {
-        width: 110vh;
-        margin-top: -290vh;
-        margin-left: 9rem;
+    #seta-voltar{
+        width: 130px;
+        margin-top: -320vh;
+        margin-left: -16vh;
     }
-}
+    #treino-alimentacao {
+        width: 150vh;
+        margin-top: -290vh;
+        margin-left: -1rem;
+    }
+    #div-img{
+        display: flex;
+        flex-direction: column;
+    }
+    #img-treino1{
+        margin: 1rem auto;
+    }
+    #img-ref{
+        margin-left: 25rem;
+        margin-bottom: 2rem;
+        }
+    }
+
+   @media(width: 768px){
+
+    #opacity {
+        width: 313vh;
+        height: 312vh;
+        margin-top: -312vh;
+    }
+
+    #intro-infos {
+        margin-top: -87vh;
+        margin-left: 2.9rem;
+    }
+    #intro-infos p{
+        width: 160vh;
+        line-height: 60px;
+        font-size: 2.3rem;
+    }
+    #buttons{
+        margin: 2rem 35rem;
+    }
+    #result h2{
+        margin: 2rem 10rem;
+    }
+    #calc-container { 
+    margin: 2rem 10rem; 
+    }
+    #result{
+        width: 720px;
+    }
+    #button-show-container{
+        margin-top: -140vh;
+        margin-left: 115vh;
+    }
+    #treino-alimentacao{
+        width: 200vh;
+        margin-top: -100vh;
+        margin-left: 65vh;  
+    }
+   }
+
+
 
 /* ----------------- BREAKPOINTS 768, 1024, 1440, 2560px (continuação da responsividade) ----------------- */
 /* ... (mantive as regras iguais às que você enviou no diff) ... */
