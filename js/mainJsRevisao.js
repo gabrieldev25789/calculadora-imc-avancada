@@ -66,7 +66,7 @@ function showResult(){
 if(!meta){
   newH2.classList.add("selectH2")
   buttonsContainer.classList.add("border")
-  buttonsContainer.classList.add("hide")
+  /*buttonsContainer.classList.add("hide")*/
   newH2.style.marginTop = "0"
   treinoAlimentacaoContainer.classList.add("hide")
   return 
@@ -366,7 +366,7 @@ ganhar.addEventListener("click", () =>{
 calcBtn.addEventListener("click", (e) => { 
     validHeightAndWeight();
     verificarValores()
-    normalizarEstiloResponsivo()
+    /*normalizarEstiloResponsivo()*/
     /*ajustarImgResponsivo()*/
 });
 
@@ -538,7 +538,7 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
 */
 
 /*function ajustarImgResponsivo(){
-  imgIntro.style.display = "none"
+  /*imgIntro.style.display = "none"
   buttons.style.marginTop = "0"
   resultContainer.style.marginTop = "4rem"
   calcContainer.style.marginTop = "20rem"
