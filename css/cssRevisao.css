@@ -583,23 +583,23 @@ span {
         font-size: 1.6rem;
         margin-bottom: 1rem !important;
     }
-    #result span {
-        width: 90vh;
-        margin: 1rem 1rem;
+     #result span{
+        margin-top: 1rem;
+        width: 500px;
     }
     
     #seta-direita {
         width: 40px;
         position: absolute;
-        margin-left: 35.2rem;
-        margin-top: 2.8rem;
+        margin-left: 40.2rem;
+        margin-top: 3.5rem;
         animation: balancoDireita 0.4s infinite alternate ease-in-out;
     }
     #seta-esquerda {
         width: 40px;
         position: absolute;
-        margin-left: 11.2rem;
-        margin-top: 2.8rem;
+        margin-left: 7.2rem;
+        margin-top: 3.5rem;
         transform: scaleX(-1);
         animation: balancoEsquerda 0.4s infinite alternate ease-in-out;
     }
@@ -658,7 +658,18 @@ span {
     margin: 2rem 10rem; 
     }
     #result{
+        margin: 0rem 5rem 10rem;
         width: 720px;
+    }
+    #result span{
+        margin-top: 1rem;
+        width: 500px;
+    }
+    #seta-direita{
+        margin-left: 45rem;
+    }
+    #seta-esquerda{
+        margin-left: 10rem;
     }
     #button-show-container{
         margin-top: -140vh;
@@ -669,7 +680,203 @@ span {
         margin-top: -100vh;
         margin-left: 65vh;  
     }
+    #buttons h2{
+        margin: 2rem 10rem;
+    }
+    #calc-container{
+        margin: 2rem 47rem;
+    }
+    #button-show-container{
+        margin-top: -50rem;
+        margin-left: 130vh;
+    }
+    #plano{
+        width: 1000px;
+        margin-left: 35rem;
+        margin-top: -48rem;
+    }
+    #seta-voltar{
+        width: 110px;
+        margin-top: -47.8rem;
+        margin-left: 27.7rem;
+    }
    }
+
+    @media(width: 1024px){
+        #imgs{
+            width: 110vh;
+        }
+        #opacity{
+        margin-top: -40rem;
+        width: 314vh;
+        height: 105vh;
+        }
+        #intro-infos{
+        margin-top: -30rem;
+        }
+        #buttons{
+        margin: 2rem 35rem;
+        }   
+        #buttons h2{
+        margin: 2rem 10rem;
+        }  
+        #calc-container{
+        margin: 2rem 47rem;
+        }  
+        #result{
+        margin: 0rem 5rem 12rem;
+        width: 720px;
+        }
+        #result span{
+            width: 500px;
+        }
+        #seta-direita{
+            margin-left: 45rem;
+        }
+        #seta-esquerda{
+            margin-left: 10rem;
+        }
+        #button-show-container{
+        margin-top: -140vh;
+        margin-left: 130vh;
+        }
+        #plano{
+        width: 1000px;
+        margin-left: 35rem;
+        margin-top: -48rem;
+        }
+        #seta-voltar{
+        width: 110px;
+        margin-top: -47.8rem;
+        margin-left: 27.7rem;
+        }
+        #treino-alimentacao{
+        margin-top: -40rem;
+        margin-left: 25rem;
+        width: 200vh;
+        }
+        #img-ref{
+            margin-left: 40rem;
+        }
+    }
+    @media(width: 1440px){
+        #opacity{
+        margin-top: -40rem;
+        width: 314vh;
+        height: 105vh;
+        }
+        #intro-infos{
+        margin-top: -30rem;
+        }
+        #buttons{
+        margin: 2rem 35rem;
+        }  
+        #buttons h2{
+        margin: 2rem 10rem;
+        } 
+        #calc-container{
+        margin: 2rem 47rem;
+        } 
+        #result{
+        margin: 0rem 5rem 15rem;
+        width: 720px;
+        }
+       #result span{
+            width: 500px;
+        }
+        #seta-esquerda{
+            margin-left: 10rem;
+        }
+        #seta-direita{
+        margin-left: 37.1rem;
+        }
+        #seta-esquerda{
+        margin-left: 2rem;
+        }
+        #button-show-container{
+        margin-top: -140vh;
+        margin-left: 130vh;
+        }
+        #plano{
+        width: 1000px;
+        margin-left: 35rem;
+        margin-top: -48rem;
+        }
+        #seta-voltar{
+        width: 110px;
+        margin-top: -47.8rem;
+        margin-left: 27.7rem;
+        }
+        #treino-alimentacao{
+        margin-top: -40rem;
+        margin-left: 25rem;
+        width: 200vh;
+        }
+        #img-ref{
+            margin-left: 40rem;
+        }
+    }
+
+    @media(width: 2560px){
+        .img-intro{
+            width: 140vh;
+        }
+        #opacity{
+        margin-top: -40rem;
+        width: 420vh;
+        height: 105vh;
+        }
+        #intro-infos{
+        margin-top: -30rem;
+        }
+        #buttons{
+        margin: 2rem 35rem;
+        }  
+        #buttons h2{
+        margin: 2rem 25rem;
+        } 
+        #calc-container{
+        margin: 2rem 60rem;
+        } 
+        #result{
+        margin: 0rem 20rem 10rem;
+        width: 720px;
+        }
+       #result span{
+            width: 500px;
+        }
+        #seta-esquerda{
+            margin-left: 10rem;
+        }
+        #seta-direita{
+        margin-left: 16.1rem;
+        }
+        #seta-esquerda{
+        margin-left: -18rem;
+        }
+        #button-show-container{
+        margin-top: -140vh;
+        margin-left: 170vh;
+        }
+        #plano{
+        width: 1000px;
+        margin-left: 55rem;
+        margin-top: -48rem;
+        }
+        #seta-voltar{
+        width: 100px;
+        margin-top: -47.8rem;
+        margin-left: 47.7rem;
+        }
+        #treino-alimentacao{
+        margin-top: -40rem;
+        margin-left: 45rem;
+        width: 200vh;
+        }
+        #img-ref{
+            margin-left: 40rem;
+        }
+    }
 
 
 
