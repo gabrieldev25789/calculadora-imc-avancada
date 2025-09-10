@@ -29,7 +29,16 @@ imgIntro.classList.add("hidden")
 opacity.classList.add("hide")
 infosIntro.classList.add("hide")
 buttons.style.marginTop = "-60vh"
-} 
+}
+
+function esconderResponsivo(){
+  imgIntro.classList.add("hidden")
+  opacity.classList.add("hide")
+  infosIntro.classList.add("hide")
+  buttons.style.marginTop = "-260vh"
+  buttonShowTreinoAlimentacao.style.marginTop = "-800px"
+  buttons.style.marginLeft = "-3px"
+}
 
 const buttonsContainer = document.querySelector("#buttons-container")
 
@@ -61,7 +70,13 @@ function showResult(){
     top: 0,
     behavior: 'smooth'
   });
-  esconder()
+
+  if(mediaQuery.matches){
+    esconderResponsivo()
+  } else{
+      esconder()
+    console.log("outra tela")
+  }
 
 if(!meta){
   newH2.classList.add("selectH2")
@@ -227,7 +242,7 @@ function validHeightAndWeight(){
       resultMessage.textContent = "digite valor em peso e altura"
       newH2.style.marginTop = "-5rem"
     } 
-    else if( weightValue >= 400 || /*weightValue >= 400 || */ heightValue > 2.20 || heightValue <= 1.30){
+    else if( weightValue >= 400 || weightValue < 0 || /*weightValue >= 400 || */ heightValue > 2.20 || heightValue <= 1.30){
       removerContainereMostrarMensagem()
       resultMessage.textContent = "valores invalidos"
       newH2.style.marginTop = "-5rem"
@@ -322,7 +337,7 @@ function verificarValores(){
     const weightValue = +weight.value;
     const heightValue = +height.value.replace(",", ".");
 
-    if (!weightValue || !heightValue || weightValue >= 400 || /*weightValue >= 400 || */ heightValue >= 2.20 /*|| heightValue <= 1 || heightValue < 1.10 ||*/ || 
+    if (!weightValue || !heightValue || weightValue >= 400 || weightValue < 0 || /*weightValue >= 400 || */ heightValue >= 2.20 /*|| heightValue <= 1 || heightValue < 1.10 ||*/ || 
     heightValue <= 1.30) return;
 
     showResult();
@@ -365,14 +380,20 @@ ganhar.addEventListener("click", () =>{
 
 calcBtn.addEventListener("click", (e) => { 
     validHeightAndWeight();
-    verificarValores()
-    /*normalizarEstiloResponsivo()*/
-    /*ajustarImgResponsivo()*/
+    verificarValores()    
 });
+
+const mediaQuery = window.matchMedia("(max-width: 425px)")
 
 document.addEventListener("keyup", (e) => {
 
 if(e.code === "Enter"){
+  if (mediaQuery.matches) {
+        // Só executa se a tela for mobile
+        chamandoNoResponsivo();
+    } else {
+        console.log("Tela grande, função não executada");
+  }
 
   calcBtn.style.backgroundColor = "#0056b3"
 
@@ -415,6 +436,9 @@ treinoAlimentacao.classList.remove("hide")
 
 // MOSTRAR TREINO / ALIMENTAÇÃO
 buttonShowTreinoAlimentacao.addEventListener("click", (e) => {
+   if(mediaQuery.matches){
+    buttonShowTreinoAlimentacao.style.marginTop = "-10px"
+  }
   treinoAlimentacao.style.display = "flex"
   mostrarContainer()
   plano.classList.remove("hide")
@@ -522,41 +546,9 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
   estilizarContainerTreino()
 }
 
-/*function normalizarEstiloResponsivo(){
-  if(resultMessage.classList.contains("very-extreme") ||
-    resultMessage.classList.contains("extreme") ||
-    resultMessage.classList.contains("low-extreme") || 
-    resultMessage.classList.contains("normal")){
-    buttonShowTreinoAlimentacao.style.marginTop = "-105rem"
-    buttonShowTreinoAlimentacao.style.marginLeft = "1vh"
-    treinoAlimentacao.style.marginTop = "-290vh"
-    treinoAlimentacao.style.marginLeft = "25vh"
-    plano.style.marginTop = "-321vh"
-    plano.style.marginLeft = "10vh"
-  }
+function chamandoNoResponsivo(){
+  buttons.style.marginTop = "-300vh"
 }
-*/
-
-/*function ajustarImgResponsivo(){
-  /*imgIntro.style.display = "none"
-  buttons.style.marginTop = "0"
-  resultContainer.style.marginTop = "4rem"
-  calcContainer.style.marginTop = "20rem"
-  calcContainer.style.marginLeft = "6rem"
-  buttons.style.marginTop = "0rem"
-  buttons.style.marginBottom = "-20rem"
-  opacity.style.marginTop = "-20000px"
-  infosIntro.style.marginTop = "-20000px"
-}
-*/
-
-window.addEventListener("keydown", (event) => {
-  // verifica se é a tecla Enter
-  if (event.key === "Enter" && window.innerWidth <= 768) {
-    /*ajustarImgResponsivo/*()*/
-    /*normalizarEstiloResponsivo()*/
-    }
-  }); 
 
 
 // ESTILIZAR O CONTAINER DE TREINO PRA PREENCHER 100% DO CONTAINER E MOSTRAR O TREINO SELECIONADO
