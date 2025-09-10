@@ -556,14 +556,18 @@ span {
         margin: 1rem 3rem;
         padding: 2rem 2rem;
     }
+    
     .button { 
-     margin: 0.5rem; text-align: center; 
+    margin: 0.5rem; 
+    text-align: center; 
     }
+
     #calc-container { 
     margin: 2rem 10rem; 
     }
+
     #result {
-        margin: -80rem 6.7rem;
+        margin: 6.7rem;
         padding: 1rem 1rem;
         background-color: #3d3c3c;
         border: 1px solid #c3e6cb;
@@ -576,7 +580,7 @@ span {
     }
     #button-show-container{
         margin-top: -1700px;
-        margin-left: 54px;
+        margin-left: -2px;
     }
 
     #result p {
