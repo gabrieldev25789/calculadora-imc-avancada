@@ -35,7 +35,7 @@ function esconderResponsivo(){
   imgIntro.classList.add("hidden")
   opacity.classList.add("hide")
   infosIntro.classList.add("hide")
-  buttons.style.marginTop = "-260vh"
+  buttons.style.marginTop = "-90vh"
   buttonShowTreinoAlimentacao.style.marginTop = "-820px"
   buttons.style.marginLeft = "-3px"
 }
@@ -547,7 +547,7 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
 }
 
 function chamandoNoResponsivo(){
-  buttons.style.marginTop = "-300vh"
+ /* buttons.style.marginTop = "-300vh" */ 
   buttonShowTreinoAlimentacao.classList.add("desfazerHide")
 }
 
