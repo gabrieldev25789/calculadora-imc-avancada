@@ -36,7 +36,7 @@ function esconderResponsivo(){
   opacity.classList.add("hide")
   infosIntro.classList.add("hide")
   buttons.style.marginTop = "-260vh"
-  buttonShowTreinoAlimentacao.style.marginTop = "-800px"
+  buttonShowTreinoAlimentacao.style.marginTop = "-820px"
   buttons.style.marginLeft = "-3px"
 }
 
@@ -437,7 +437,7 @@ treinoAlimentacao.classList.remove("hide")
 // MOSTRAR TREINO / ALIMENTAÇÃO
 buttonShowTreinoAlimentacao.addEventListener("click", (e) => {
    if(mediaQuery.matches){
-    buttonShowTreinoAlimentacao.style.marginTop = "-10px"
+    chamandoNoResponsivo()
   }
   treinoAlimentacao.style.display = "flex"
   mostrarContainer()
@@ -548,6 +548,7 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
 
 function chamandoNoResponsivo(){
   buttons.style.marginTop = "-300vh"
+  buttonShowTreinoAlimentacao.classList.add("desfazerHide")
 }
 
 
