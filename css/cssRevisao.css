@@ -478,6 +478,11 @@ span {
 .hide { 
     display: none !important;
 }
+.desfazerHide{
+    display: flex !important;
+    margin-left: 13rem !important;
+    width: 420px !important;
+}
 .hidden { 
     visibility: hidden; 
 }
@@ -513,6 +518,23 @@ span {
 .very-extreme { background-color: rgb(238, 16, 16) !important; }
 
 /* ------------------ RESPONSIVIDADE ------------------ */
+@media (max-width: 320px){
+    #plano{
+        margin-left: -1vh !important;
+    }
+    #seta-voltar{
+        margin-left: -23vh !important;
+    }
+}
+
+@media (max-width: 425px){
+    #plano{
+        margin-left: -5vh !important;
+    }
+    #seta-voltar{
+        margin-left: -27vh !important;
+    }
+}
 @media (max-width: 425px) {
     body {
         align-items: center;
@@ -588,8 +610,9 @@ span {
         margin-bottom: 1rem !important;
     }
      #result span{
-        margin-top: 1rem;
-        width: 500px;
+        margin-top: 1.8rem;
+        width: 600px;
+        margin-left: -1rem;
     }
     
     #seta-direita {
@@ -608,18 +631,18 @@ span {
         animation: balancoEsquerda 0.4s infinite alternate ease-in-out;
     }
     #plano {
-        width: 100vh;
-        margin-top: -320vh;
-        margin-left: 2.5rem;
+        width: 120vh;
+        margin-top: -110vh;
+        margin-left: -5.6rem;
     }
     #seta-voltar{
-        width: 130px;
-        margin-top: -320vh;
-        margin-left: -16vh;
+        width: 140px;
+        margin-top: -110vh;
+        margin-left: -13.4rem;
     }
     #treino-alimentacao {
         width: 150vh;
-        margin-top: -290vh;
+        margin-top: -80vh;
         margin-left: -1rem;
     }
     #div-img{
