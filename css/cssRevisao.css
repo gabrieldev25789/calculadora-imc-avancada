@@ -1028,6 +1028,16 @@ span {
         font-size: 0.9rem;
     }
 
+    #seta-voltar,
+    #seta-direita,
+    #seta-esquerda,
+    #button-show-container,
+    #img-ref {
+    display: none;
+    }
+
+
+    /*
     #plano,
     #treino-alimentacao,
     #seta-voltar,
@@ -1035,8 +1045,9 @@ span {
     #seta-esquerda,
     #button-show-container,
     #img-ref {
-        display: none; /* esconder elementos decorativos em telas muito pequenas */
+        display: none; /* esconder elementos decorativos em telas muito pequenas 
     }
+    */
 
     #div-img {
         display: flex;
