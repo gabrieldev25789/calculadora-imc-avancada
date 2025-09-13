@@ -817,10 +817,27 @@ span {
         }
     }
 
-    @media (width: 425px) {
-        body{
-            background-color: blue;
+        @media (width: 375px) {
+
+            body{
+                background-color: blue;
+            }
+
+        #opacity{
+            width: 70vh;
         }
+
+        #intro-infos{
+            margin-top: -30rem;
+            margin-left: -0.8rem;
+        }
+
+        #intro-infos p{
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (width: 425px) {
 
         #opacity{
             width: 70vh;
