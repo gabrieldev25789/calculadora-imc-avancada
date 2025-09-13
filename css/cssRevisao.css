@@ -667,6 +667,7 @@ span {
 
     @media (max-width: 425px) {
     body {
+        background-color: blue;
         text-align: center;
         margin: 0;
         padding: 0;
