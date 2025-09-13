@@ -685,25 +685,33 @@ span {
      }
 
     #opacity {
-        width: 147vh;
+        width: 53vh;
         height: 312vh;
         margin-top: -312vh;
     }
     #intro-infos {
-        margin-top: -275vh;
-        margin-left: 2.9rem;
+    margin-left: -4rem;
+    position: absolute;
+    margin-top: -54vh;
+    color: white;
     }
     #intro-infos h1 {
+        margin-top: -14rem;
         border-bottom: 8px solid black;
         padding-bottom: 0.5rem;
+        font-size: 1.5rem;
+        display: flex;
+        line-height: 26px;
+        width: 280px;
+        margin-left: 5rem;
     }
     #intro-infos p {
-        margin-top: 1rem;
-        width: 800px;
-        font-size: 3rem;
+        width: 280px;
+        font-size: 1rem;
         font-family: serif;
-        line-height: 120px;
+        line-height: 40px;
         font-weight: bold;
+        margin-left: 5rem;
     }
     #buttons { 
         margin: 2rem auto;
