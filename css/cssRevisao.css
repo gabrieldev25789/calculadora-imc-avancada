@@ -536,6 +536,7 @@ span {
         margin-left: -27vh !important;
     }
 }
+    */
 @media (max-width: 425px) {
     body {
         align-items: center;
@@ -658,7 +659,7 @@ span {
         margin-bottom: 2rem;
         }
     }
-
+/*
    @media(width: 768px){
 
     #opacity {
@@ -907,12 +908,13 @@ span {
     }
 
 */
+/*
 @media (max-width: 425px) {
     body {
         text-align: center;
         margin: 0;
         padding: 0;
-        overflow-x: hidden; /* evita scroll lateral */
+        overflow-x: hidden; /* evita scroll lateral 
     }
 
     #imgs {
@@ -1047,7 +1049,7 @@ span {
     #img-ref {
         display: none; /* esconder elementos decorativos em telas muito pequenas 
     }
-    */
+    
 
     #div-img {
         display: flex;
@@ -1062,7 +1064,7 @@ span {
         height: auto;
     }
 }
-
+*/
 @media(width: 768px){
 
     #opacity {
