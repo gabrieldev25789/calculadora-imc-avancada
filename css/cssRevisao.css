@@ -816,6 +816,21 @@ span {
         margin-bottom: 2rem;
         }
     }
+
+    @media (width: 425px) {
+        #opacity{
+            width: 70vh;
+        }
+
+        #intro-infos{
+            margin-top: -30rem;
+            margin-left: -0.8rem;
+        }
+
+        #intro-infos p{
+            font-size: 1.3rem;
+        }
+    }
 /*
     @media (max-width: 425px) 
         
