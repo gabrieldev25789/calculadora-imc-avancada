@@ -539,8 +539,10 @@ span {
     */
 @media (max-width: 425px) {
     body {
-        align-items: center;
         text-align: center;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;;
     }
     #imgs {
         display: flex;
@@ -659,6 +661,165 @@ span {
         margin-bottom: 2rem;
         }
     }
+
+/*
+    @media (max-width: 425px) 
+        
+    body {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* evita scroll lateral 
+    }
+
+    #imgs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .img-intro { 
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    #opacity {
+        margin-top: -100vh;
+        width: 100%;
+        height: 100vh;
+    }
+
+    #intro-infos {
+        margin: -30rem 1rem;
+        padding: 0 1rem;
+        max-width: 90%;
+    }
+
+    #intro-infos h1 {
+        border-bottom: 3px solid black;
+        padding-bottom: 0.5rem;
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    #intro-infos p {
+        margin-top: 1rem;
+        max-width: 100%;
+        font-size: clamp(1rem, 4vw, 1.4rem);
+        line-height: 1.5;
+        font-family: serif;
+        font-weight: bold;
+    }
+
+    #buttons { 
+        margin: 2rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    #buttons h2 { 
+        margin-top: -2rem !important;
+        margin: 1rem 0;
+        font-size: 1.2rem;
+    }
+
+    #buttons-container {
+        width: 100%;
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    #button-show-container{
+        width: 40vh !important;
+        margin-top: -820px;
+        margin-left: 6vh !important;
+    }
+
+    #treino-alimentacao{
+        margin-left: -2vh;
+    }
+    
+    .button { 
+        flex: 1 1 30%;
+        min-width: 100px;
+        padding: 0.8rem;
+        text-align: center; 
+    }
+
+    #calc-container { 
+        width: 100%;
+        max-width: 90%;
+        margin: 2rem auto;
+    }
+
+    #result {
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: #3d3c3c;
+        border: 1px solid #c3e6cb;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        width: 100%;
+        max-width: 90%;
+    }
+
+    #result p {
+        font-size: 1rem;
+        margin-bottom: 1rem !important;
+    }
+
+    #result span {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 90%;
+        font-size: 0.9rem;
+    }
+
+    #seta-voltar,
+    #seta-direita,
+    #seta-esquerda,
+    #button-show-container,
+    #img-ref {
+    display: none;
+    }
+
+
+    /*
+    #plano,
+    #treino-alimentacao,
+    #seta-voltar,
+    #seta-direita,
+    #seta-esquerda,
+    #button-show-container,
+    #img-ref {
+        display: none; /* esconder elementos decorativos em telas muito pequenas 
+    }
+    
+
+    #div-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    #img-treino1 {
+        margin: 0 auto;
+        max-width: 90%;
+        height: auto;
+    }
+}
+
 /*
    @media(width: 768px){
 
@@ -1065,6 +1226,7 @@ span {
     }
 }
 */
+
 @media(width: 768px){
 
     #opacity {
@@ -1134,7 +1296,7 @@ span {
         margin-top: -47.8rem;
         margin-left: 27.7rem;
     }
-   }
+    }
 
     @media(width: 1024px){
         #imgs{
