@@ -678,7 +678,12 @@ span {
         width: 100%;
         max-width: 100%;
     }
-    .img-intro { width: 210%; }
+    .img-intro { 
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+     }
+
     #opacity {
         width: 147vh;
         height: 312vh;
@@ -701,15 +706,26 @@ span {
         font-weight: bold;
     }
     #buttons { 
-        width: 100px; 
+        margin: 2rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem; 
     }
     #buttons h2 { 
-        margin: 3.5rem 7rem; 
+       margin-top: -2rem !important;
+        margin: 1rem 0;
+        font-size: 1.2rem; 
     }
     #buttons-container {
-        width: 120vh;
-        margin: 1rem 3rem;
-        padding: 2rem 2rem;
+       width: 100%;
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
     }
     
     .button { 
@@ -718,7 +734,9 @@ span {
     }
 
     #calc-container { 
-    margin: 2rem 10rem; 
+        width: 100%;
+        max-width: 90%;
+        margin: 2rem auto;
     }
 
     #result {
