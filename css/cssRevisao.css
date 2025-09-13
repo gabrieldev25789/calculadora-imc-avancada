@@ -667,7 +667,6 @@ span {
 
     @media (max-width: 425px) {
     body {
-        background-color: blue;
         text-align: center;
         margin: 0;
         padding: 0;
@@ -686,7 +685,7 @@ span {
      }
 
     #opacity {
-        width: 53vh;
+        width: 49vh;
         height: 312vh;
         margin-top: -312vh;
     }
@@ -819,10 +818,6 @@ span {
     }
 
         @media (width: 375px) {
-
-            body{
-                background-color: blue;
-            }
 
         #opacity{
             width: 70vh;
