@@ -537,6 +537,7 @@ span {
     }
 }
     */
+/*
 @media (max-width: 425px) {
     body {
         text-align: center;
@@ -662,6 +663,133 @@ span {
         }
     }
 
+    */
+
+    @media (max-width: 425px) {
+    body {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;;
+    }
+    #imgs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+    .img-intro { width: 210%; }
+    #opacity {
+        width: 147vh;
+        height: 312vh;
+        margin-top: -312vh;
+    }
+    #intro-infos {
+        margin-top: -275vh;
+        margin-left: 2.9rem;
+    }
+    #intro-infos h1 {
+        border-bottom: 8px solid black;
+        padding-bottom: 0.5rem;
+    }
+    #intro-infos p {
+        margin-top: 1rem;
+        width: 800px;
+        font-size: 3rem;
+        font-family: serif;
+        line-height: 120px;
+        font-weight: bold;
+    }
+    #buttons { 
+        width: 100px; 
+    }
+    #buttons h2 { 
+        margin: 3.5rem 7rem; 
+    }
+    #buttons-container {
+        width: 120vh;
+        margin: 1rem 3rem;
+        padding: 2rem 2rem;
+    }
+    
+    .button { 
+    margin: 0.5rem; 
+    text-align: center; 
+    }
+
+    #calc-container { 
+    margin: 2rem 10rem; 
+    }
+
+    #result {
+        margin: 6.7rem;
+        padding: 1rem 1rem;
+        background-color: #3d3c3c;
+        border: 1px solid #c3e6cb;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: bold;
+        width: 100vh;
+        height: 6.5rem;
+        margin-bottom: 8rem;   
+    }
+    #button-show-container{
+        margin-top: -1700px;
+        margin-left: -2px;
+    }
+
+    #result p {
+        font-size: 1.6rem;
+        margin-bottom: 1rem !important;
+    }
+     #result span{
+        margin-top: 1.8rem;
+        width: 600px;
+        margin-left: -1rem;
+    }
+    
+    #seta-direita {
+        width: 40px;
+        position: absolute;
+        margin-left: 40.2rem;
+        margin-top: 3.5rem;
+        animation: balancoDireita 0.4s infinite alternate ease-in-out;
+    }
+    #seta-esquerda {
+        width: 40px;
+        position: absolute;
+        margin-left: 7.2rem;
+        margin-top: 3.5rem;
+        transform: scaleX(-1);
+        animation: balancoEsquerda 0.4s infinite alternate ease-in-out;
+    }
+    #plano {
+        width: 120vh;
+        margin-top: -110vh;
+        margin-left: -5.6rem;
+    }
+    #seta-voltar{
+        width: 140px;
+        margin-top: -110vh;
+        margin-left: -13.4rem;
+    }
+    #treino-alimentacao {
+        width: 150vh;
+        margin-top: -80vh;
+        margin-left: -1rem;
+    }
+    #div-img{
+        display: flex;
+        flex-direction: column;
+    }
+    #img-treino1{
+        margin: 1rem auto;
+    }
+    #img-ref{
+        margin-left: 25rem;
+        margin-bottom: 2rem;
+        }
+    }
 /*
     @media (max-width: 425px) 
         
