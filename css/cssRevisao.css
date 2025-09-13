@@ -818,6 +818,10 @@ span {
     }
 
     @media (width: 425px) {
+        body{
+            background-color: blue;
+        }
+
         #opacity{
             width: 70vh;
         }
