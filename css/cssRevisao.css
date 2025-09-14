@@ -685,12 +685,12 @@ span {
      }
 
     #opacity {
-        width: 49vh;
+        width: 65vh;
         height: 312vh;
         margin-top: -312vh;
     }
     #intro-infos {
-    margin-left: -2rem;
+    margin-left: -4rem;
     position: absolute;
     margin-top: -54vh;
     color: white;
