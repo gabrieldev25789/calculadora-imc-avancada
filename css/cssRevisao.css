@@ -533,29 +533,30 @@ span {
     margin-top: -300vh;
     }
     #intro-infos{
-        margin-top: -250vh;
+        margin-top: -220vh;
     }
     #intro-infos h1{
        width: 70vh;
        text-align: center;
+       margin-left: -3rem;
     }
     #intro-infos p{
         text-align: center;
-        line-height: 90px;
-        font-size: 2.8rem;
+        line-height: 80px;
+        font-size: 2.7rem;
         height: 180vh;
-        width: 90vh;
-        margin-left: -2rem;
+        width: 60vh;
+        margin-left: -1rem;
     }
     #buttons{
     }
     #buttons-container{
-        width: 50vh;
+        width: 40vh;
         margin: 2rem 9rem;
         display: flex;
         flex-direction: column;
     }
     .button{
-        margin: 0.5rem;
+        margin: 0.5rem 0;
     }
 }
