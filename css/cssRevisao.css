@@ -516,3 +516,46 @@ span {
 .normal { background-color: rgb(130, 245, 22) !important; }
 .extreme { background-color: rgb(216, 42, 29) !important; }
 .very-extreme { background-color: rgb(238, 16, 16) !important; }
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 425px){
+    body{
+        background-color: blue;
+    }
+    #imgs{
+        display: flex;
+        flex-direction: column;
+    }
+    #opacity{
+    width: 97vh;
+    height: 300vh;
+    margin-top: -300vh;
+    }
+    #intro-infos{
+        margin-top: -250vh;
+    }
+    #intro-infos h1{
+       width: 70vh;
+       text-align: center;
+    }
+    #intro-infos p{
+        text-align: center;
+        line-height: 90px;
+        font-size: 2.8rem;
+        height: 180vh;
+        width: 90vh;
+        margin-left: -2rem;
+    }
+    #buttons{
+    }
+    #buttons-container{
+        width: 50vh;
+        margin: 2rem 9rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .button{
+        margin: 0.5rem;
+    }
+}
