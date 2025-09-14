@@ -528,7 +528,7 @@ span {
         flex-direction: column;
     }
     #opacity{
-    width: 97vh;
+    width: 80vh;
     height: 300vh;
     margin-top: -300vh;
     }
@@ -558,5 +558,9 @@ span {
     }
     .button{
         margin: 0.5rem 0;
+    }
+    #calc-container{
+        width: 60vh;
+        margin-left: 6rem;
     }
 }
