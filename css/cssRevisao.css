@@ -548,7 +548,9 @@ span {
         width: 60vh;
         margin-left: -1rem;
     }
-    #buttons{
+    #buttons h2{
+        width: 40vh;
+        margin-left: 9rem;
     }
     #buttons-container{
         width: 40vh;
@@ -560,7 +562,8 @@ span {
         margin: 0.5rem 0;
     }
     #calc-container{
-        width: 60vh;
-        margin-left: 6rem;
+       width: 150%;
+        max-width: 150%;
+        margin: -1rem -0.1rem;
     }
 }
