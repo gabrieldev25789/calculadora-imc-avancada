@@ -519,18 +519,21 @@ span {
 
 /* RESPONSIVIDADE */
 
+
 @media(max-width: 425px){
-    body{
-        background-color: blue;
-    }
+    
     #imgs{
         display: flex;
         flex-direction: column;
     }
     #opacity{
+     width: 100%;       /* antes 80vh */
+        height: auto;      /* evita forçar 300vh */
+        margin-top: 0;     /* remove o empurrão */
+        /*
     width: 80vh;
     height: 300vh;
-    margin-top: -300vh;
+    margin-top: -300vh; */
     }
     #intro-infos{
         margin-top: -220vh;
@@ -567,3 +570,6 @@ span {
         margin: -1rem -0.1rem;
     }
 }
+
+
+
