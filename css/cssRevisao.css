@@ -639,6 +639,25 @@ span {
        margin-left: 3.2rem !important;
        width: 40vh !important;
     }
+    #plano{
+        font-size: 1.2rem;
+        margin-top: -85vh;
+        width: 30vh;
+        margin-left: 20vh;
+    }
+    #seta-voltar{
+        margin-top: -41rem;
+        margin-left: 4rem;
+    }
+    #treino-alimentacao{
+        margin-left: -5vh;
+        display: flex;
+        flex-direction: column;
+    }
+    #treino, #alimentacao{
+        margin-left: 0.5rem;
+        width: 100%;
+    }
 }
 
 
