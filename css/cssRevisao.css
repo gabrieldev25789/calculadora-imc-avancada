@@ -573,14 +573,18 @@ span {
         display: flex;
         flex-direction: column;
     }
+    .img-intro{
+        width: auto;
+    }
     #opacity{
         width: 100%;
-        height: auto; /* ou um valor em px se precisar */
-        margin-top: 0; /* evite valores muito negativos */
+        height: 230%; /* ou um valor em px se precisar */
+        margin-top: -230vh; /* evite valores muito negativos */
     }
     #intro-infos{
-        margin-top: -40rem; /* ajuste suave */
+        margin-top: -110rem; /* ajuste suave */
         padding: 0 1rem;
+        margin-left: -1rem;
     }
     #intro-infos h1{
         width: 100%;
@@ -589,8 +593,8 @@ span {
     }
     #intro-infos p{
         text-align: center;
-        line-height: 1.6em;
-        font-size: 1.4rem;
+        line-height: 3.5em;
+        font-size: 1.8rem;
         width: 100%;
         margin: 1rem auto;
     }
