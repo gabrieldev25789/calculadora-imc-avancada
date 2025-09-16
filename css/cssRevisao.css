@@ -606,6 +606,30 @@ span {
     .button{
         margin: 0.5rem 0;
     }
+    #result{
+        width: 50vh;
+        margin-left: -1rem;
+    }
+    #result p{
+        margin-top: -1rem;
+    }
+    #result span{
+        margin-top: -1rem;
+        width: 50vh;
+        margin-left: -1rem;
+    }
+    #buttons-container{
+        margin-top: 7rem;
+    }
+    #seta-direita{
+        margin-left: 10rem;
+        margin-top: 3rem;
+    }
+    #seta-esquerda{
+        margin-left: -12.1rem;
+        margin-top: 3rem;
+
+    }
     #calc-container{
         width: 100%;
         max-width: 100%;
