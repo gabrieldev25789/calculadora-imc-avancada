@@ -520,6 +520,7 @@ span {
 /* RESPONSIVIDADE */
 
 
+/*
 @media(max-width: 425px){
     
     #imgs{
@@ -565,7 +566,49 @@ span {
         max-width: 150%;
         margin: -1rem -0.1rem;
     }
+} */
+
+@media(max-width: 425px){
+    #imgs{
+        display: flex;
+        flex-direction: column;
+    }
+    #opacity{
+        width: 100%;
+        height: auto; /* ou um valor em px se precisar */
+        margin-top: 0; /* evite valores muito negativos */
+    }
+    #intro-infos{
+        margin-top: -40rem; /* ajuste suave */
+        padding: 0 1rem;
+    }
+    #intro-infos h1{
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    #intro-infos p{
+        text-align: center;
+        line-height: 1.6em;
+        font-size: 1.4rem;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    #buttons h2, 
+    #buttons-container{
+        width: 100%;
+        margin: 1rem auto;
+    }
+    .button{
+        margin: 0.5rem 0;
+    }
+    #calc-container{
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
 }
+
 
 
 
