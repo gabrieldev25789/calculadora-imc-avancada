@@ -578,7 +578,7 @@ span {
     }
     #opacity{
         width: 100%;
-        height: 230%; /* ou um valor em px se precisar */
+        height: 250%; /* ou um valor em px se precisar */
         margin-top: -230vh; /* evite valores muito negativos */
     }
     #intro-infos{
