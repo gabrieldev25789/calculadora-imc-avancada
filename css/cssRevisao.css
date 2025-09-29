@@ -6,7 +6,6 @@
 
 body {
     background-color: #1a1919;
-    font-family: 'Roboto', Arial, sans-serif;
 }
 
 #imgs {
@@ -383,7 +382,7 @@ span {
 
 #treino ul {
     text-align: left;
-    font-family: fantasy;
+    font-family: serif;
     font-size: 2.2rem;
     margin: 2rem 0;
 }
@@ -405,7 +404,7 @@ span {
 /* REFEIÇÃO */
 #div-refeicao ul {
     text-transform: uppercase;
-    font-family: fantasy;
+    font-family: serif;
     display: flex;
     text-align: left;
     margin-left: 2rem;
