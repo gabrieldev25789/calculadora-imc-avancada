@@ -41,8 +41,6 @@ strong{
     color: rgb(235, 182, 68);
 }
 
-
-
 #intro-infos p {
     margin-top: 1rem;
     line-height: 44px;
@@ -398,8 +396,8 @@ span {
     justify-content: space-around;
 }
 
-#img-treino1, #img-treino2 {
-    width: 500px;
+.img-treino{
+    width: 600px;
     border-radius: 8px;
 }
 
@@ -663,6 +661,31 @@ span {
     #treino, #alimentacao{
         margin-left: 0.5rem;
         width: 100%;
+    }
+    #alimentacao{
+        width: 100% !important;
+    }
+    #div-img{
+        display: flex;
+        flex-direction: column;
+    }
+    .img-treino{
+    width: 25rem;
+    margin: 1rem 0.5rem;
+    border-radius: 8px;
+    }
+    #grupo-muscular,
+    #dia-treino{
+        width: auto !important;
+    }
+
+    #img-ref{
+    margin-top: -1rem;
+    margin-left: 1.5rem;
+    width: 400px;
+    height: 270px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
     }
 }
 
