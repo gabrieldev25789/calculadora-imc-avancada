@@ -391,6 +391,7 @@ if(e.code === "Enter"){
   if (mediaQuery.matches) {
         // Só executa se a tela for mobile
         chamandoNoResponsivo();
+
     } else {
         console.log("Tela grande, função não executada");
   }
@@ -508,11 +509,11 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
   divImg.id = "div-img"
 
   const imgTreino1 = document.createElement("img")
-  imgTreino1.id = "img-treino1"
+  imgTreino1.classList.add("img-treino")
   imgTreino1.src = `./img/${imagem1}`
 
   const imgTreino2 = document.createElement("img")
-  imgTreino2.id = "img-treino1"
+  imgTreino2.classList.add("img-treino")
   imgTreino2.src = `./img/${imagem2}`
 
   const grupoMuscular = document.createElement("h3")
@@ -547,6 +548,8 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
 }
 
 function chamandoNoResponsivo(){
+  console.log("AQUI!")
+  treinoAlimentacaoContainer.style.color = "red"
  /* buttons.style.marginTop = "-300vh" */ 
   buttonShowTreinoAlimentacao.classList.add("desfazerHide")
 }
@@ -567,7 +570,16 @@ buttonFechar.addEventListener("click", () => {
 })
 
 function buttonFecharTreino(){
-  treinoStyle.style.width = "50%"
+  if (mediaQuery.matches) {
+        // Só executa se a tela for mobile
+        console.log("aaaaaaaaaaaaafechar")
+        treinoStyle.style.width = "100%"
+        alimentacaoContainer.style.width = "100%"
+
+    } else {
+        console.log("Tela grande, função não executada");
+        treinoStyle.style.width = "50%"
+      }
   div.classList.add("hide")
   containerTreino.classList.remove("hide")
   alimentacaoContainer.classList.remove("hide")
@@ -594,6 +606,19 @@ const treinosPorMeta = {
 // FAZER UM LOOP NOS BUTTONS DE TREINO E MOSTRAR O TREINO CORRESPONDENTE
 buttonTreino.forEach((treinoBtn)=>{
   treinoBtn.addEventListener("click", () => {
+
+    if (mediaQuery.matches) {
+        // Só executa se a tela for mobile
+        console.log("aaaaaaaaaaaaa")
+        treinoAlimentacao.style.width = "110%"
+       /* treinoStyle.style.width = "50%" */
+        
+
+    } else {
+        console.log("Tela grande, função não executada");
+  }
+
+
   buttonFechar.style.marginTop = "0rem"
 
   containerTreino.classList.add("hide") 
