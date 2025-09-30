@@ -103,7 +103,7 @@ strong{
 }
 
 #ganhar {
-    background-color: rgb(14, 226, 42);
+    background-color: rgb(5, 148, 24);
 }
 
 #manter {
@@ -481,11 +481,13 @@ span {
 .hide { 
     display: none !important;
 }
+
+/*
 .desfazerHide{
     display: flex !important;
     margin-left: 13rem !important;
     width: 420px !important;
-}
+} */
 .hidden { 
     visibility: hidden; 
 }
