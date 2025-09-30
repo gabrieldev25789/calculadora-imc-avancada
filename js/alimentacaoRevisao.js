@@ -1050,6 +1050,5 @@ const refeicoes = {
   }
   
   };
-//SEGUNDA 
 
 export default refeicoes;
