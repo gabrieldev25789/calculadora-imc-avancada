@@ -20,8 +20,6 @@ const opacity = document.querySelector("#opacity")
 const infosIntro = document.querySelector("#intro-infos")
 const newH2 = document.querySelector("#buttons h2")
 
-const telaPreta = document.querySelector("#telaPreta")
-
 const buttons = document.querySelector("#buttons")
 
 function esconder(){
@@ -75,13 +73,11 @@ function showResult(){
     esconderResponsivo()
   } else{
       esconder()
-    console.log("outra tela")
   }
 
 if(!meta){
   newH2.classList.add("selectH2")
   buttonsContainer.classList.add("border")
-  /*buttonsContainer.classList.add("hide")*/
   newH2.style.marginTop = "0"
   treinoAlimentacaoContainer.classList.add("hide")
   return 
@@ -103,31 +99,26 @@ if(!meta){
 
     resultMessage.innerHTML = `Seu IMC é de ${imc}, seu índice é ${dados.info}`
     alertMessage.classList.add("hide")
-
+    HideH2eButtonsContainer()
   switch (dados.info) {
       case "Magreza":
           resultMessage.classList.add("low-extreme");
-          HideH2eButtonsContainer()
           break;
 
       case "Normal":
           resultMessage.classList.add("normal");
-          HideH2eButtonsContainer()
           break;
 
       case "Sobrepeso":
           resultMessage.classList.add("low-extreme");
-          HideH2eButtonsContainer()
           break;
 
       case "Obesidade":
           resultMessage.classList.add("extreme");
-          HideH2eButtonsContainer()
           break;
 
       case "Obesidade grave":
           resultMessage.classList.add("very-extreme");
-          HideH2eButtonsContainer()
           break;
       }
 
@@ -150,7 +141,6 @@ if(!meta){
         perder        
         );
           hideContainer()
-
         }
 
   if (meta === "manter" && imc >= 25) {
@@ -161,7 +151,6 @@ if(!meta){
         perder        
         );
           hideContainer()
-
         }
 
   if (meta === "manter" && imc <= 18.4) {
@@ -172,7 +161,6 @@ if(!meta){
         ganhar        
         );
           hideContainer()
-
         }
 
   if (meta === "ganhar" && dados.info === "Normal") {
@@ -183,7 +171,6 @@ if(!meta){
         manter        
         );
           hideContainer()
-
         }
 
   if (meta === "perder" && dados.info === "Normal") {
@@ -337,8 +324,7 @@ function verificarValores(){
     const weightValue = +weight.value;
     const heightValue = +height.value.replace(",", ".");
 
-    if (!weightValue || !heightValue || weightValue >= 400 || weightValue < 0 || /*weightValue >= 400 || */ heightValue >= 2.20 /*|| heightValue <= 1 || heightValue < 1.10 ||*/ || 
-    heightValue <= 1.30) return;
+    if (!weightValue || !heightValue || weightValue >= 400 || weightValue < 0 ||  heightValue >= 2.20 || heightValue <= 1.30) return;
 
     showResult();
     cleanInputs()
@@ -355,7 +341,6 @@ perder.addEventListener("click", () =>{
   imgIntro.style.display = "flex"
 
   cleanInfos()
-
 })
 
 manter.addEventListener("click", () =>{
@@ -372,7 +357,7 @@ ganhar.addEventListener("click", () =>{
   meta = "ganhar"
 
   estilosMetas(ganhar, manter, perder)
-  normalizarCores(ganhar, "rgb(14, 226, 42)")
+  normalizarCores(ganhar, "rgb(5, 148, 24)")
   imgIntro.style.display = "flex"
 
   cleanInfos()
@@ -380,7 +365,7 @@ ganhar.addEventListener("click", () =>{
 
 calcBtn.addEventListener("click", (e) => { 
     validHeightAndWeight();
-    verificarValores()    
+    verificarValores()  
 });
 
 const mediaQuery = window.matchMedia("(max-width: 425px)")
@@ -391,10 +376,7 @@ if(e.code === "Enter"){
   if (mediaQuery.matches) {
         // Só executa se a tela for mobile
         chamandoNoResponsivo();
-
-    } else {
-        console.log("Tela grande, função não executada");
-  }
+    }
 
   calcBtn.style.backgroundColor = "#0056b3"
 
@@ -416,7 +398,6 @@ if(e.code === "Enter"){
   cleanInputs()
 
   calcContainer.classList.add("hidden")
-  /*normalizarEstilo()*/
   } 
 })
 
@@ -458,7 +439,7 @@ back.addEventListener("click", () => {
   normalizarVisual()
 })
 
-// FUÇÃO PRA NORMALIZAR O VISUAL INICIAL 
+// FUNÇÃO PRA NORMALIZAR O VISUAL INICIAL 
 function normalizarVisual(){
 const introInfos = document.querySelector("#intro-infos")
 const opacity = document.querySelector("#opacity")
@@ -469,7 +450,7 @@ const opacity = document.querySelector("#opacity")
  opacity.classList.remove("hide")
 }
 
-// FUNÇÃO PRA VOLTAR PRO INCIO DO PROJETO / LIMPAR TODAS AS INFORMAÇÕES QUE FORAM FORNECIDAS
+// FUNÇÃO PRA VOLTAR PRO INICIO DO PROJETO / LIMPAR TODAS AS INFORMAÇÕES QUE FORAM FORNECIDAS
 function zerarContainers(){
   buttonFecharTreino()
   fecharContainerAlimentacao()
@@ -548,15 +529,10 @@ function mostrarTreino(treino1, treino2, treino3, dia, grupo, imagem1, imagem2){
 }
 
 function chamandoNoResponsivo(){
-  console.log("AQUI!")
-  treinoAlimentacaoContainer.style.color = "red"
- /* buttons.style.marginTop = "-300vh" */ 
   buttonShowTreinoAlimentacao.classList.add("desfazerHide")
 }
 
-
 // ESTILIZAR O CONTAINER DE TREINO PRA PREENCHER 100% DO CONTAINER E MOSTRAR O TREINO SELECIONADO
-
 function estilizarContainerTreino(){
   alimentacaoContainer.classList.add("hide")
   treinoStyle.style.width = "100%"
@@ -572,12 +548,10 @@ buttonFechar.addEventListener("click", () => {
 function buttonFecharTreino(){
   if (mediaQuery.matches) {
         // Só executa se a tela for mobile
-        console.log("aaaaaaaaaaaaafechar")
         treinoStyle.style.width = "100%"
         alimentacaoContainer.style.width = "100%"
 
     } else {
-        console.log("Tela grande, função não executada");
         treinoStyle.style.width = "50%"
       }
   div.classList.add("hide")
@@ -609,20 +583,14 @@ buttonTreino.forEach((treinoBtn)=>{
 
     if (mediaQuery.matches) {
         // Só executa se a tela for mobile
-        console.log("aaaaaaaaaaaaa")
-        treinoAlimentacao.style.width = "110%"
-       /* treinoStyle.style.width = "50%" */
-        
-
-    } else {
-        console.log("Tela grande, função não executada");
-  }
-
+        treinoAlimentacao.style.width = "110%"        
+      } 
 
   buttonFechar.style.marginTop = "0rem"
 
   containerTreino.classList.add("hide") 
   const treinoDia = treinoBtn.parentElement
+
     if(meta){
       const treino = treinosPorMeta[meta][treinoDia.id]
 
@@ -701,12 +669,12 @@ function mostrarRefeicao(dia, refeicaoTipo, refeicao, macro, imagem){
 
 // ESTILIZAR O COONTAINER DE REFEIÇÃO PRA OCUPAR 100% DO CONTAINER E MOSTRAR A REFEIÇÃO 
 function estilizarRefeicao(){
+  [containerAlimentacao, treinoStyle].forEach((el)=> el.classList.add("hide"))
+
   alimentacaoContainer.appendChild(divRefeicao) 
   buttonFechar.classList.remove("hide")
   alimentacaoContainer.appendChild(buttonFechar)
   alimentacaoContainer.style.width = "100%"
-  containerAlimentacao.classList.add("hide")
-  treinoStyle.classList.add("hide")
   divRefeicao.classList.remove("hide")
 }
  buttonFechar.addEventListener("click", () => {
@@ -714,9 +682,8 @@ function estilizarRefeicao(){
 })
 
 function fecharContainerAlimentacao(){
-    buttonFechar.classList.add("hide")
+  [buttonFechar, divRefeicao].forEach((el)=> el.classList.add("hide"))
     treinoStyle.classList.remove("hide")
-    divRefeicao.classList.add("hide")
     alimentacaoContainer.style.width = "50%"
     containerAlimentacao.classList.remove("hide")
     selects.forEach((select)=>{
