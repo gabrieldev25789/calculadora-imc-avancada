@@ -1,0 +1,1001 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1919;
+}
+
+#imgs {
+    display: flex;
+}
+
+.img-intro {
+    width: 635px;
+    height: 600px;
+}
+
+#opacity {
+    opacity: 0.6;
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    width: 199.9vh;
+    height: 65.2vh;
+    margin-top: -65.2vh;
+}
+
+#intro-infos {
+    position: absolute;
+    margin-top: -52vh;
+    margin-left: 4rem;
+    color: white;
+}
+
+#intro-infos h1 {
+    font-size: 3.8rem;
+    font-family: sans-serif;
+}
+strong{
+    color: rgb(235, 182, 68);
+}
+
+#intro-infos p {
+    margin-top: 1rem;
+    line-height: 44px;
+    width: 800px;
+    font-size: 1.9rem;
+    font-family: math;
+}
+
+/* BUTTONS (PERDER, MANTER, GANHAR) */
+#buttons {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* SELECIONE UMA OPÇÃO */
+#buttons h2 {
+    font-size: 2.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-bottom: 2px solid white;
+    padding-bottom: 0.5rem;
+    width: 600px;
+    text-align: center;
+    margin: 2rem auto;
+    color: rgb(236, 157, 10);
+    text-transform: uppercase;
+}
+
+/* CONTAINER DE BUTTONS(META) */
+#buttons-container {
+    background-color: rgb(49, 44, 44);
+    padding: 2rem;
+    width: 150vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 8px;
+}
+
+/* CLASSE PARA ESTILIZAR OS 3 BUTTONS */
+.button {
+    width: 250px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 1.1rem 0 1rem;
+    font-size: 1.2rem;
+    border-radius: 28px;
+    opacity: 0.9;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+}
+
+.button:hover {
+    opacity: 1;
+}
+
+/* CORES DOS BUTTONS */
+#perder {
+    background-color: red;
+}
+
+#ganhar {
+    background-color: rgb(5, 148, 24);
+}
+
+#manter {
+    background-color: rgb(221, 108, 15);
+}
+
+/* CONTAINER DE CALCULADORA */
+#calc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(19, 19, 18);
+    margin: 2rem auto;
+    border-radius: 8px;
+    padding: 1.3rem;
+    width: 100vh;
+}
+
+/* CONTAINER DE INPUTS E LABELS */
+#inputs-labels {
+    background: #2b2a2a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 500px;
+}
+
+/* TEXTO DOS INPUTS E LABELS */
+#inputs-labels h2 {
+    text-align: center;
+    font-size: 2.1rem;
+    border-bottom: 2px solid white;
+    padding-bottom: 0.5rem;
+    color: white;
+}
+
+/* LABEL */
+.label {
+    font-size: 1.7rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: rgb(255, 255, 255);
+}
+
+/* INPUT */
+.input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    outline: 0;
+}
+
+/* SETA DE VOLTAR PARA O INICIO DO PROJETO */
+#seta-voltar {
+    width: 90px;
+    position: absolute;
+    margin-top: -73.5vh;
+    margin-left: 49vh;
+}
+
+/* BUTTON DE CALCULAR */
+#btn-calc {
+    padding: 0.8rem 2rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn-calc:hover {
+    background-color: #0056b3;
+}
+
+/* RESULTADO */
+#result {
+    margin: 1rem auto;
+    padding: 1rem 1rem;
+    background-color: #3d3c3c;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    width: 100vh;
+    height: 6.5rem;
+    margin-bottom: 8rem;
+}
+
+/* MENSAGEM DO RESULTADO */
+#result p {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background-color: red;
+}
+
+/* ALERTA DO RESULTADO(APARECE CASO TENHA INCOERENCIA DO IMC COM AS METAS) */
+#result span {
+    font-size: 1.6rem;
+    color: white;
+    border-radius: 8px;
+    background-color: red;
+    padding: 1rem;
+    position: absolute;
+    width: 70vh;
+    margin: 1rem 14vh;
+}
+
+/* SETAS QUE APONTAM PRA OPÇÃO RECOMENDADA DE ACORDO COM O IMC */
+#seta-direita {
+    width: 40px;
+    position: absolute;
+    margin-left: 15rem;
+    margin-top: 2.8rem;
+    animation: balancoDireita 0.4s infinite alternate ease-in-out;
+}
+
+#seta-esquerda {
+    width: 40px;
+    position: absolute;
+    margin-left: -17.2rem;
+    margin-top: 2.8rem;
+    transform: scaleX(-1); /* inverte a imagem */
+    animation: balancoEsquerda 0.4s infinite alternate ease-in-out;
+}
+
+/* ANIMAÇÕES DAS SETAS */
+@keyframes balancoDireita {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-5px); }
+}
+
+@keyframes balancoEsquerda {
+    0% { transform: scaleX(-1) translateX(0); }
+    100% { transform: scaleX(-1) translateX(5px); }
+}
+
+/* CONTAINER TREINO / ALIMENTAÇÃO */
+span {
+    display: flex;
+    flex-direction: column;
+}
+
+/* BUTTONS PARA VER O TREINO */
+.button-treino {
+    width: 200px;
+    padding: 0.3rem;
+    border-radius: 8px;
+    margin: 0.5rem auto;
+}
+
+/* LABEL DE ALIMENTAÇÃO */
+#label-aliment {
+    padding: 1rem;
+}
+
+/* CONTAINER QUE ENGLOBA TREINO E ALIMENTAÇÃO */
+#treino-alimentacao {
+    position: absolute;
+    width: 140vh;
+    background-color: rgb(46, 151, 46);
+    margin-top: -60vh;
+    margin-left: 33vh;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+}
+
+#treino{
+    background: #161515 !important;
+}
+
+/* TREINO E ALIMENTAÇÃO */
+#treino,
+#alimentacao {
+    background-color: rgb(41, 194, 173);
+    width: 50%;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    padding: 2rem;
+    color: white;
+    border-radius: 8px;
+}
+
+#treino h2, #alimentacao h2 {
+    font-family: sans-serif;
+    width: 400px;
+    margin: 1rem auto;
+    border-bottom: 3px solid black;
+    padding-bottom: 1.2rem;
+}
+
+/* DIFERENTE NO CONTAINER DE ALIMENTAÇÃO */
+#alimentacao {
+    background: rgb(116, 107, 96);
+    color: rgb(235, 170, 49);
+    padding: 0.5rem;
+    padding-top: 2rem;
+}
+
+/* BUTTON MOSTRAR PLANO */
+#button-show-container {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+    background-color: rgb(238, 238, 238);
+    position: absolute;
+    width: 460px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    margin-top: -80vh;
+    margin-left: 75vh;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgb(224, 224, 224);
+    opacity: 0.9;
+    color: #252424;
+}
+
+#button-show-container:hover {
+    opacity: 1;
+}
+
+/* TEXTO PLANO */
+#plano {
+    text-decoration: none;
+    font-size: 2rem;
+    font-family: sans-serif;
+    color: white;
+    margin-top: -74vh;
+    margin-left: 58vh;
+    background-color: rgb(27, 27, 27);
+    padding: 1.4rem;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px white;
+    position: absolute;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+#plano:hover {
+    opacity: 1;
+}
+
+/* BOTÃO FECHAR */
+#fechar {
+    background-color: #eb2306;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-left: -2rem;
+    position: absolute;
+}
+
+/* TREINOS */
+#treino h3 {
+    font-family: sans-serif;
+    font-size: 1.7em;
+    width: 600px;
+    border-bottom: 2px solid white;
+    margin: 1rem auto;
+    padding-bottom: 0.5rem;
+}
+
+#treino ul {
+    text-align: left;
+    font-family: serif;
+    font-size: 2.2rem;
+    margin: 2rem 0;
+}
+
+#treino li {
+    margin: 1rem;
+}
+
+#div-img {
+    display: flex;
+    justify-content: space-around;
+}
+
+.img-treino{
+    width: 600px;
+    border-radius: 8px;
+}
+
+/* REFEIÇÃO */
+#div-refeicao ul {
+    text-transform: uppercase;
+    font-family: serif;
+    display: flex;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+#div-refeicao li {
+    padding: 1rem;
+    font-size: 2.1rem;
+    line-height: 60px;
+    border-bottom: 3px dashed rgb(54, 54, 54);
+}
+
+#lista-macro {
+    font-size: 1.8rem !important;
+    width: 300px !important;
+    border-bottom: none !important;
+}
+
+#img-ref {
+    width: 480px;
+    height: 270px;
+    margin-left: 81vh;
+    margin-top: -40vh;
+    border-radius: 8px;
+    box-shadow: 4px 4px 4px white;
+}
+
+#span-aliment {
+    padding: 1rem;
+}
+
+.select-ref {
+    margin-top: 0.2rem;
+    width: 320px;
+    padding: 0.3rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.button-treino {
+    width: 400px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.treino-dia {
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+#dia, #dia-sabado-treino {
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+}
+
+.dia {
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+    font-size: 1.9rem;
+}
+
+.treino-dia {
+    color: greenyellow;
+    font-size: 1.7rem;
+    font-family: serif;
+    margin-bottom: 0.5rem;
+}
+
+#grupo-muscular{
+    color: greenyellow;
+
+}
+
+#tipo-refeicao {
+    color: white !important;
+    font-size: 1.8rem;
+}
+
+/* CLASSES MANIPULADAS NO JS */
+.hide { 
+    display: none !important;
+}
+
+/*
+.desfazerHide{
+    display: flex !important;
+    margin-left: 13rem !important;
+    width: 420px !important;
+} */
+.hidden { 
+    visibility: hidden; 
+}
+
+.recomend {
+    width: 420px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 1.2rem;
+    font-size: 1.3rem;
+    border: 3px solid rgb(17, 17, 17);
+    color: rgb(19, 18, 18);
+}
+
+.select {
+    box-shadow: 4px 4px 4px rgb(9, 255, 0);
+    opacity: 1;
+}
+
+.border {
+    border: 2px solid red;
+}
+
+.selectH2 {
+    font-size: 3rem !important;
+    color: red !important;
+}
+
+.low-extreme { background-color: rgb(236, 123, 16) !important; }
+.normal { background-color: rgb(130, 245, 22) !important; }
+.extreme { background-color: rgb(216, 42, 29) !important; }
+.very-extreme { background-color: rgb(238, 16, 16) !important; }
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 425px){
+    #imgs{
+        display: flex;
+        flex-direction: column;
+    }
+    .img-intro{
+        width: auto;
+    }
+    #opacity{
+        width: 100%;
+        height: 256.2%; /* ou um valor em px se precisar */
+        margin-top: -230vh; /* evite valores muito negativos */
+    }
+    #intro-infos{
+        margin-top: -110rem; /* ajuste suave */
+        padding: 0 1rem;
+        margin-left: -1rem;
+    }
+    #intro-infos h1{
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    #intro-infos p{
+        text-align: center;
+        line-height: 3.5em;
+        font-size: 1.8rem;
+        width: 100%;
+        margin: 1rem auto;
+    }
+    #buttons h2, 
+    #buttons-container{
+        width: 100%;
+        margin: 1rem auto;
+    }
+    .button{
+        margin: 0.5rem 0;
+    }
+    #result{
+        width: 50vh;
+        margin-left: -1rem;
+    }
+    #result p{
+        margin-top: -1rem;
+    }
+    #result span{
+        margin-top: -1rem;
+        width: 50vh;
+        margin-left: -1rem;
+    }
+    #buttons-container{
+        margin-top: 7rem;
+    }
+    #seta-direita{
+        margin-left: 10rem;
+        margin-top: 3rem;
+    }
+    #seta-esquerda{
+        margin-left: -12.1rem;
+        margin-top: 3rem;
+
+    }
+    #calc-container{
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    #button-show-container{
+       margin-left: 3.2rem !important;
+       width: 40vh !important;
+    }
+    #plano{
+        font-size: 1.2rem;
+        margin-top: -85vh;
+        width: 30vh;
+        margin-left: 20vh;
+    }
+    #seta-voltar{
+        margin-top: -41rem;
+        margin-left: 4rem;
+    }
+    #treino-alimentacao{
+        width: auto;
+        margin-left: -5vh;
+        display: flex;
+        flex-direction: column;
+    }
+    #treino, #alimentacao{
+        margin-left: 0.5rem;
+        width: 100%;
+    }
+    #alimentacao{
+        width: 100% !important;
+    }
+    #div-img{
+        display: flex;
+        flex-direction: column;
+    }
+    .img-treino{
+    width: 25rem;
+    margin: 1rem 0.5rem;
+    border-radius: 8px;
+    }
+    #grupo-muscular,
+    #dia-treino{
+        width: auto !important;
+    }
+
+    #img-ref{
+    margin-top: -1rem;
+    margin-left: 1.5rem;
+    width: 400px;
+    height: 270px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    }
+}
+
+@media(width: 768px){
+ 
+    #opacity{
+        width: 248%;
+        height: 256.2%; 
+        margin-top: -256.2vh;
+    }
+
+    #intro-infos{
+        margin-top: -72vh;
+    }
+
+    #intro-infos p{
+        width: 140vh;
+        font-size: 2.7rem;
+        line-height: 60px;
+    }
+
+    #result{
+        margin: 1rem 13rem 8rem;
+    }
+
+    #result p{
+         font-size: 3rem;
+    }
+
+    #result span{
+        margin-top: 1rem;
+        margin-left: -1rem;
+        width: 100vh;
+        font-size: 3rem;
+    }
+
+    #buttons{
+        margin: 1rem 20rem;
+    }
+
+    #buttons h2{
+        font-size: 5rem;
+        margin: 1rem 21rem;
+        text-align: center;
+    }
+
+    #buttons-container{
+        margin-top: 12rem;
+    }
+
+    .button{
+    margin: 1rem;
+    width: 50vh;
+    height: 10vh;
+    font-size: 1.8rem;
+    }
+
+    #calc-container{
+        width: 120vh;
+        margin-left: 60vh;
+        padding: 2rem;
+    }
+
+    #inputs-labels{
+        width: 100vh;
+    }
+
+    #inputs-labels h2{
+        font-size: 4rem;
+    }
+
+    .label{
+        font-size: 3rem;
+    }
+
+    .input{
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    #btn-calc{
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    #seta-direita{
+        margin-top: 8.5rem;
+        margin-left: 103vh;
+    }
+
+    #seta-esquerda{
+        margin-top: 8.7rem;
+        margin-left: 34vh;
+    }
+
+    #button-show-container{
+        margin-top: -150vh;
+        font-size: 2rem;
+        width: 90vh;
+        padding: 2rem;
+    }
+
+    #plano{
+        font-size: 3.2rem;
+        width: 140vh;
+        margin-top: -150vh;
+    }
+
+    #seta-voltar{
+        margin-left: 16rem;
+        margin-top: -150vh;
+        width: 25vh;
+    }
+
+    #treino-alimentacao{
+        margin-left: 10rem;
+        margin-top: -60rem;
+        width: 200vh;
+    }
+    #treino h2 {
+        font-size: 4rem;
+    }
+    #alimentacao h2{
+        font-size: 3rem;
+    }
+    #dia,#dia-sabado-treino{
+        font-size: 3rem;
+    }
+    .treino-dia, .dia{
+        font-size: 3rem;
+    }
+
+    .button-treino{
+        width: 500px;
+        font-size: 2.5rem;
+        padding: 1.2rem;
+    }
+
+    .select-ref{
+    padding: 1rem;
+    width: 70vh;
+    font-size: 2rem;
+    }
+
+    #dia-treino{
+        font-size: 4rem !important;
+    }
+    #grupo-muscular{
+        width: 150vh !important;
+        font-size: 4rem !important;
+    }
+    #ul-treino{
+        font-size: 3.5rem !important;
+    }
+
+    #dia-semana{
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #tipo-refeicao{
+        font-size: 4rem;
+    }
+
+    #lista-refeicao{
+        line-height: 80px !important;
+        font-size: 3.5rem !important;
+    }
+
+    #lista-macro{
+        line-height: 80px !important;
+        font-size: 3rem !important;
+    }
+
+    #img-ref{
+        margin-left: 72vh;
+        margin-top: -83vh;
+        margin-bottom: 2rem;
+        width: 120vh;
+        height: 100vh;
+    }
+}
+
+@media(width: 1024px){
+      #opacity{
+        width: 186%;
+        margin-top: -76vh;
+        height: 76vh;
+    }
+
+    #intro-infos{
+        margin-top: -70vh;
+    }
+
+    #intro-infos p{
+        line-height: 50px;
+        width: 120vh;
+        font-size: 2.5rem;
+    }
+
+    #result{
+        margin-left: 32rem;
+    }
+
+    #result p{
+        font-size: 2rem;
+    }
+
+    #result span{
+        font-size: 2rem;
+    }
+
+    #buttons h2{
+        font-size: 4rem;
+        margin: 2rem 40rem;
+    }
+
+    #buttons-container{
+        margin: 2rem 20rem;
+    }
+
+    .button{
+        width: 40vh;
+        padding: 2rem;
+        font-size: 1.6rem;
+    }
+
+    #calc-container{
+        margin-left: 65vh;
+    }
+    #calc-container, 
+    #inputs-labels{
+        width: 110vh;
+    }
+
+    #inputs-labels h2{
+        font-size: 3.2rem;
+    }
+
+    .label{
+        font-size: 3rem;
+    }
+
+    .input{
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    #btn-calc{
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    #seta-direita{
+        margin-top: 4rem;
+        margin-left: 83vh;
+    }
+
+    #seta-esquerda{
+        margin-top: 4rem;
+        margin-left: 22vh;
+    }
+  
+    #button-show-container{
+        width: 40rem;
+        margin-top: -145vh;
+        margin-left: 39rem;
+        font-size: 2rem;
+    }
+
+    #plano{
+        width: 120vh;
+        margin-top: -150vh;
+    }
+
+    #seta-voltar{
+        width: 13vh;
+        margin-left: 22rem;
+        margin-top: -150vh;
+    }
+
+    #treino-alimentacao{
+        width: 160vh;
+        margin-left: 40vh;
+        margin-top: -132vh;
+    }
+
+    #treino h2, 
+    #alimentacao h2{
+        font-size: 3rem;
+    }
+
+    #treino-container p{
+        font-size: 2.4rem;
+    }
+
+    .treino-dia, 
+    .dia{
+        font-size: 2.4rem;
+    }
+
+    .lista-treino{
+        font-size: 2rem !important;
+    }
+
+    .button-treino{
+        width: 60vh;
+        padding: 1.1rem;
+        font-size: 2rem;
+    }
+
+    .select-ref{
+        width: 50vh;
+        padding: 0.9rem;
+        font-size: 1.8rem;
+    }
+
+    #lista-treino{
+        font-size: 2.5rem;
+    }
+
+    #dia-semana{
+        font-size: 2.7rem;
+    }
+
+    #tipo-refeicao{
+        font-size: 2.7rem;
+    }
+
+    #lista-refeicao, 
+    #lista-macro{
+        font-size: 2.5rem !important;
+    }
+    #img-ref{
+        margin-left: 55vh;
+        margin-top: -35rem;
+        margin-bottom: 2rem;
+        width: 95vh;
+        height: 60vh;
+    }
+}
+
+
+
+
+
+
+
