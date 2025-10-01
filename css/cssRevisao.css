@@ -285,6 +285,10 @@ span {
     display: flex;
 }
 
+#treino{
+    background: #161515 !important;
+}
+
 /* TREINO E ALIMENTAÇÃO */
 #treino,
 #alimentacao {
@@ -307,7 +311,8 @@ span {
 
 /* DIFERENTE NO CONTAINER DE ALIMENTAÇÃO */
 #alimentacao {
-    background-color: rgb(34, 156, 226);
+    background: rgb(116, 107, 96);
+    color: rgb(235, 170, 49);
     padding: 0.5rem;
     padding-top: 2rem;
 }
@@ -468,9 +473,15 @@ span {
 }
 
 .treino-dia {
+    color: greenyellow;
     font-size: 1.7rem;
     font-family: serif;
     margin-bottom: 0.5rem;
+}
+
+#grupo-muscular{
+    color: greenyellow;
+
 }
 
 #tipo-refeicao {
@@ -523,55 +534,6 @@ span {
 .very-extreme { background-color: rgb(238, 16, 16) !important; }
 
 /* RESPONSIVIDADE */
-
-
-/*
-@media(max-width: 425px){
-    
-    #imgs{
-        display: flex;
-        flex-direction: column;
-    }
-    #opacity{
-    width: 80vh;
-    height: 300vh;
-    margin-top: -300vh; 
-    }
-    #intro-infos{
-        margin-top: -220vh;
-    }
-    #intro-infos h1{
-       width: 70vh;
-       text-align: center;
-       margin-left: -3rem;
-    }
-    #intro-infos p{
-        text-align: center;
-        line-height: 80px;
-        font-size: 2.7rem;
-        height: 180vh;
-        width: 60vh;
-        margin-left: -1rem;
-    }
-    #buttons h2{
-        width: 40vh;
-        margin-left: 9rem;
-    }
-    #buttons-container{
-        width: 40vh;
-        margin: 2rem 9rem;
-        display: flex;
-        flex-direction: column;
-    }
-    .button{
-        margin: 0.5rem 0;
-    }
-    #calc-container{
-       width: 150%;
-        max-width: 150%;
-        margin: -1rem -0.1rem;
-    }
-} */
 
 @media(max-width: 425px){
     #imgs{
@@ -689,6 +651,188 @@ span {
     margin-bottom: 1rem;
     border-radius: 8px;
     }
+}
+
+@media(width: 768px){
+ 
+    #opacity{
+        width: 248%;
+        height: 256.2%; 
+        margin-top: -256.2vh;
+    }
+
+    #intro-infos{
+        margin-top: -72vh;
+    }
+
+    #intro-infos p{
+        width: 140vh;
+        font-size: 2.7rem;
+        line-height: 60px;
+    }
+
+    #result{
+        margin: 1rem 13rem 8rem;
+    }
+
+    #result p{
+         font-size: 3rem;
+    }
+
+    #result span{
+        margin-top: 1rem;
+        margin-left: -1rem;
+        width: 100vh;
+        font-size: 3rem;
+    }
+
+    #buttons{
+        margin: 1rem 20rem;
+    }
+
+    #buttons h2{
+        font-size: 5rem;
+        margin: 1rem 21rem;
+        text-align: center;
+    }
+
+    #buttons-container{
+        margin-top: 12rem;
+    }
+
+    .button{
+    margin: 1rem;
+    width: 50vh;
+    height: 10vh;
+    font-size: 1.8rem;
+    }
+
+    #calc-container{
+        width: 120vh;
+        margin-left: 60vh;
+        padding: 2rem;
+    }
+
+    #inputs-labels{
+        width: 100vh;
+    }
+
+    #inputs-labels h2{
+        font-size: 4rem;
+    }
+
+    .label{
+        font-size: 3rem;
+    }
+
+    .input{
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    #btn-calc{
+        padding: 2rem;
+        font-size: 2rem;
+    }
+
+    #seta-direita{
+        margin-top: 8.5rem;
+        margin-left: 103vh;
+    }
+
+    #seta-esquerda{
+        margin-top: 8.7rem;
+        margin-left: 34vh;
+    }
+
+    #button-show-container{
+        margin-top: -150vh;
+        font-size: 2rem;
+        width: 90vh;
+        padding: 2rem;
+    }
+
+    #plano{
+        font-size: 3.2rem;
+        width: 140vh;
+        margin-top: -150vh;
+    }
+
+    #seta-voltar{
+        margin-left: 16rem;
+        margin-top: -150vh;
+        width: 25vh;
+    }
+
+    #treino-alimentacao{
+        margin-left: 10rem;
+        margin-top: -60rem;
+        width: 200vh;
+    }
+    #treino h2 {
+        font-size: 4rem;
+    }
+    #alimentacao h2{
+        font-size: 3rem;
+    }
+    #dia,#dia-sabado-treino{
+        font-size: 3rem;
+    }
+    .treino-dia, .dia{
+        font-size: 3rem;
+    }
+
+    .button-treino{
+        width: 500px;
+        font-size: 2.5rem;
+        padding: 1.2rem;
+    }
+
+    .select-ref{
+    padding: 1rem;
+    width: 70vh;
+    font-size: 2rem;
+    }
+
+    #dia-treino{
+        font-size: 4rem !important;
+    }
+    #grupo-muscular{
+        width: 150vh !important;
+        font-size: 4rem !important;
+    }
+    #ul-treino{
+        font-size: 3.5rem !important;
+    }
+
+    #dia-semana{
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #tipo-refeicao{
+        color: white;
+        font-size: 4rem;
+    }
+
+    #lista-refeicao{
+        line-height: 80px !important;
+        font-size: 3.5rem !important;
+    }
+
+    #lista-macro{
+        line-height: 80px !important;
+        font-size: 3rem !important;
+    }
+
+    #img-ref{
+        margin-left: 72vh;
+        margin-top: -83vh;
+        margin-bottom: 2rem;
+        width: 120vh;
+        height: 100vh;
+    }
+
 }
 
 
