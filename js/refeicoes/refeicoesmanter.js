@@ -92,4 +92,4 @@ const refDiasManter = [{
 }]
 
 export default refDiasManter 
-import refeicoes from "../alimentacaoRevisao.js"
+import refeicoes from "../calcAlimentacao.js"

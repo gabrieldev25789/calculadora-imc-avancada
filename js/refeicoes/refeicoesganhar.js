@@ -92,4 +92,4 @@ const refDiasGanhar = [{
 }]
 
 export default refDiasGanhar
-import refeicoes from "../alimentacaoRevisao.js"
+import refeicoes from "../calcAlimentacao.js"

@@ -94,4 +94,4 @@ cafeSegunda: refeicoes.perder.segunda.cafe,
 
 
 export default refDiasPerder
-import refeicoes from "../alimentacaoRevisao.js"
+import refeicoes from "../calcAlimentacao.js"
