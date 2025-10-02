@@ -993,6 +993,125 @@ span {
     }
 }
 
+@media(width: 1440px){
+    #opacity{
+        width: 239vh;
+        height: 76vh;
+        margin-top: -76vh;
+    }
+
+    #intro-infos{
+        margin-top: -70vh;
+    }
+
+    #intro-infos p{
+        line-height: 60px;
+    }
+
+    #buttons h2{
+        margin-left: 40rem;
+    }
+
+    #result{
+        margin-left: 33rem;
+    }
+
+    #buttons-container{
+        margin-left: 40vh;
+    }
+
+    #calc-container{
+        width: 90vh;
+        margin-left: 73vh;
+    }
+
+    #inputs-labels{
+        width: 80vh;
+    }
+
+    #inputs-labels h2{
+        font-size: 3.1rem;
+    }
+
+    .label{
+        font-size: 2.7rem;
+    }
+
+    .input{
+        font-size: 1.5rem;
+        padding: 1.2rem;
+    }
+
+    #seta-direita{
+        margin-top: 2.8rem;
+        margin-left: 60vh;
+    }
+
+    #seta-esquerda{
+        margin-left: -7vh;
+    }
+
+    #button-show-container{
+        margin-left: 41rem;
+        font-size: 1.7rem;
+        width: 70vh;
+        margin-top: -120vh;
+    }
+
+    #plano{
+        margin-top: -120vh;
+    }
+
+    #seta-voltar{
+        margin-left: 23rem;
+        margin-top: -120vh;
+    }
+
+    #treino-alimentacao{
+        margin-left: 45vh;
+        margin-top: -105vh;
+    }
+
+    #treino, 
+    #alimentacao{
+        font-size: 2rem;
+    }
+
+    #dia, #dia-sabado-treino{
+        font-size: 2.3rem;
+    }
+
+    .treino-dia, 
+    .dia{
+        font-size: 2.4rem;
+    }
+
+    .button-treino{
+        padding: 0.8rem;
+        font-size: 1.6rem;
+    }
+
+    .img-treino{
+        width: 520px;
+    }
+
+    #tipo-refeicao{
+        font-size: 3rem;
+    }
+
+    #img-ref{
+        width: 700px;
+        height: 400px;
+        margin-left: 50vh;
+        margin-bottom: 2rem;
+    }
+
+    .select-ref{
+        font-size: 1.7rem;
+        padding: 0.5rem;
+    }
+}
+
 
 
 
