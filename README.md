@@ -14,6 +14,6 @@ Tudo com base na situação do IMC do usuario
 - Interface intuitiva e fácil de usar
 
 ## 📦 Como usar
-1. Clone este repositório:
+1. Deploy do projeto:
    ```bash
-   git clone https://github.com/seuusuario/calculadora-imc-avancada.git
+   https://calculadora-imc-avancada.vercel.app/
