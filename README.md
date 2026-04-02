@@ -1,6 +1,5 @@
 # 🧮 Calculadora de IMC Avançada
 
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Tech](https://img.shields.io/badge/tech-HTML%20%7C%20CSS%20%7C%20JS-blue)
 ![Responsivo](https://img.shields.io/badge/responsive-yes-green)
 
@@ -58,10 +57,6 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 - HTML5  
 - CSS3  
 - JavaScript  
-
----
-
-## 📂 Estrutura do projeto
 
 ---
 
