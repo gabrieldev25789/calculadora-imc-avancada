@@ -23,13 +23,13 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 ## 🖼️ Preview
 
 <div align="center">
-  <img src="./imgs/preview1.png" alt="Preview 1" width="45%" />
-  <img src="./imgs/preview2.png" alt="Preview 2" width="45%" />
+  <img src="./imgs/prints/print1.jpg" alt="Preview 1" width="45%" />
+  <img src="./imgs/prints/print2.jpg" alt="Preview 2" width="45%" />
 </div>
 
 <div align="center">
-  <img src="./imgs/preview3.png" alt="Preview 3" width="45%" />
-  <img src="./imgs/preview4.png" alt="Preview 4" width="45%" />
+  <img src="./imgs/prints/print3.jpg" alt="Preview 3" width="45%" />
+  <img src="./imgs/prints/print4.jpg" alt="Preview 4" width="45%" />
 </div>
 
 > 💡 Substitua os arquivos `preview1.png`, `preview2.png`, `preview3.png` e `preview4.png` dentro da pasta `/imgs` pelas suas capturas de tela reais.
