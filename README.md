@@ -32,7 +32,6 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
   <img src="./imgs/prints/print4.jpg" alt="Preview 4" width="45%" />
 </div>
 
-> 💡 Substitua os arquivos `preview1.png`, `preview2.png`, `preview3.png` e `preview4.png` dentro da pasta `/imgs` pelas suas capturas de tela reais.
 
 ---
 
@@ -63,18 +62,6 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 ---
 
 ## 📂 Estrutura do projeto
-
-```
-/projeto
-  ├── index.html
-  ├── style.css
-  ├── script.js
-  └── /imgs
-       ├── preview1.png
-       ├── preview2.png
-       ├── preview3.png
-       └── preview4.png
-```
 
 ---
 
