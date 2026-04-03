@@ -58,19 +58,8 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 - JavaScript (Vanilla JS)
 
 ---
-
-## 🎯 Objetivo do projeto
-
-- Praticar lógica condicional e manipulação de dados
-- Trabalhar com validação de entradas do usuário
-- Gerar conteúdo dinâmico baseado em diferentes estados
-- Simular uma aplicação real de saúde e bem-estar
-
----
-
-        🌐 Deploy
-    Acesse o projeto online:
-
+🌐 Deploy
+Acesse o projeto online:
 👉 https://calculadora-imc-avancada.vercel.app/
 
 ---
