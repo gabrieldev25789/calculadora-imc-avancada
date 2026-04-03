@@ -1,6 +1,5 @@
 # 🧮 Calculadora de IMC Avançada
 
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![Tech](https://img.shields.io/badge/tech-HTML%20%7C%20CSS%20%7C%20JS-blue)
 ![Responsivo](https://img.shields.io/badge/responsive-yes-green)
 
@@ -10,11 +9,11 @@ Uma aplicação web que vai além do cálculo de IMC, oferecendo **recomendaçõ
 
 ## 🌍 Sobre o projeto
 
-Esta aplicação calcula o IMC e analisa se o resultado está alinhado com a meta escolhida:
+Esta aplicação calcula o IMC e analisa se o resultado está alinhado com a meta escolhida pelo usuário:
 
-- Perder peso  
-- Manter peso  
-- Ganhar peso  
+- Perder peso
+- Manter peso
+- Ganhar peso
 
 Com base nisso, o sistema gera **orientações práticas**, simulando uma experiência mais próxima de aplicações reais de saúde.
 
@@ -23,15 +22,14 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 ## 🖼️ Preview
 
 <div align="center">
-  <img src="./imgs/prints/print1.jpg" alt="Preview 1" width="45%" />
-  <img src="./imgs/prints/print2.jpg" alt="Preview 2" width="45%" />
+  <img src="./imgs/prints/print1.jpg" alt="Preview 1" width="45%" height="250px" style="object-fit: cover;" />
+  <img src="./imgs/prints/print2.jpg" alt="Preview 2" width="45%" height="250px" style="object-fit: cover;" />
 </div>
 
 <div align="center">
-  <img src="./imgs/prints/print3.jpg" alt="Preview 3" width="45%" />
-  <img src="./imgs/prints/print4.jpg" alt="Preview 4" width="45%" />
+  <img src="./imgs/prints/print3.jpg" alt="Preview 3" width="45%" height="250px" style="object-fit: cover;" />
+  <img src="./imgs/prints/print4.jpg" alt="Preview 4" width="45%" height="250px" style="object-fit: cover;" />
 </div>
-
 
 ---
 
@@ -42,12 +40,12 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 ✔️ Definição de metas personalizadas  
 ✔️ Análise inteligente baseada na meta escolhida  
 ✔️ Sugestão de treino semanal (segunda a domingo)  
-✔️ Sugestão de alimentação diária:  
+✔️ Sugestão de alimentação diária:
 
-- Café da manhã  
-- Almoço  
-- Lanche  
-- Jantar  
+- Café da manhã
+- Almoço
+- Lanche
+- Jantar
 
 ✔️ Interface totalmente responsiva  
 
@@ -55,13 +53,25 @@ Com base nisso, o sistema gera **orientações práticas**, simulando uma experi
 
 ## 🛠️ Tecnologias utilizadas
 
-- HTML5  
-- CSS3  
-- JavaScript  
+- HTML5
+- CSS3
+- JavaScript (Vanilla JS)
 
 ---
 
-## 📂 Estrutura do projeto
+## 🎯 Objetivo do projeto
+
+- Praticar lógica condicional e manipulação de dados
+- Trabalhar com validação de entradas do usuário
+- Gerar conteúdo dinâmico baseado em diferentes estados
+- Simular uma aplicação real de saúde e bem-estar
+
+---
+
+        🌐 Deploy
+    Acesse o projeto online:
+
+👉 https://calculadora-imc-avancada.vercel.app/
 
 ---
 
